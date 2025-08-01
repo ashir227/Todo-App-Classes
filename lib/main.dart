@@ -9,7 +9,22 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: ListView(
           children: [
-            Container(height: 200, width: double.infinity, color: Colors.red),
+            Text(
+              "One ",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
+            Text(
+              "One ",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
+            Text(
+              "One ",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
+            Text(
+              "One ",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
           ],
         ),
       ),
