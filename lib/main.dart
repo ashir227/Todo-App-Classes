@@ -9,15 +9,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var data = [
+      "Ashir",
+      "Bilal,",
+      "Mehmood",
+      "Faisal",
+      "Moon",
+      "Anas",
+      "daniyal",
+      "Mohsin",
+      "umar",
+    ];
     return MaterialApp(
       debugShowCheckedModeBanner: false, // Removes debug banner
       home: Scaffold(
         appBar: AppBar(title: const Text('Todo App')),
         body: ListView.builder(
           itemBuilder: (context, index) {
-            return Text("aa", style: TextStyle(fontSize: 20));
+            return Container(
+              child: Text(data[index], style: TextStyle(fontSize: 20)),
+              color: Colors.yellow,
+              height: 20,
+            );
           },
-          itemCount: 25,
+          itemCount: data.length,
           itemExtent: 100,
         ),
       ),
