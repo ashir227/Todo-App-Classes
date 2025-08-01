@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         body: ListView.builder(
           itemBuilder: (context, index) {
             return Container(
+              margin: EdgeInsets.only(bottom: 20),
               child: Text(data[index], style: TextStyle(fontSize: 20)),
               color: Colors.yellow,
               height: 20,
