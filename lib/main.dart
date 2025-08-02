@@ -23,20 +23,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, // Removes debug banner
       home: Scaffold(
-        appBar: AppBar(title: const Text('Todo App')),
+        appBar: AppBar(
+          title: const Text('Todo App'),
+          backgroundColor: Colors.grey,
+        ),
         body: ListView.separated(
           itemBuilder: (context, index) {
             return Container(
-              margin: EdgeInsets.only(bottom: 20),
+              padding: EdgeInsets.only(bottom: -0),
+              margin: EdgeInsets.only(bottom: 12),
               child: Text(data[index], style: TextStyle(fontSize: 20)),
-              color: Colors.yellow,
+              // color: Colors.yellow,
               height: 20,
             );
           },
           itemCount: data.length,
-          separatorBuilder: (context,index){
-return Divider(height: 100,thickness: 2,)
-
+          separatorBuilder: (context, index) {
+            return Divider(height: 100, thickness: 4);
           },
         ),
       ),
