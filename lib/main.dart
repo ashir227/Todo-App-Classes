@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       "daniyal",
       "Mohsin",
       "umar",
+      "Noman",
     ];
     return MaterialApp(
       debugShowCheckedModeBanner: false, // Removes debug banner
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         body: ListView.separated(
           itemBuilder: (context, index) {
             return Container(
+              color: Colors.blue,
               padding: EdgeInsets.only(bottom: -0),
               margin: EdgeInsets.only(bottom: 12),
               child: Text(data[index], style: TextStyle(fontSize: 20)),
