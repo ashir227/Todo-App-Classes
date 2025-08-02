@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, // Removes debug banner
       home: Scaffold(
         appBar: AppBar(title: const Text('Todo App')),
-        body: ListView.builder(
+        body: ListView.separated(
           itemBuilder: (context, index) {
             return Container(
               margin: EdgeInsets.only(bottom: 20),
@@ -34,7 +34,10 @@ class MyApp extends StatelessWidget {
             );
           },
           itemCount: data.length,
-          itemExtent: 100,
+          separatorBuilder: (context,index){
+return Divider(height: 100,thickness: 2,)
+
+          },
         ),
       ),
     );
