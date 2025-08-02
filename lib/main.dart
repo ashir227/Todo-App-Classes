@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
               margin: EdgeInsets.only(bottom: 12),
               child: Text(data[index], style: TextStyle(fontSize: 20)),
               // color: Colors.yellow,
-              height: 20,
+              height: 30,
             );
           },
           itemCount: data.length,
