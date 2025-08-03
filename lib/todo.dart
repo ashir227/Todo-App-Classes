@@ -14,47 +14,23 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    bool isfav = true;
-    List animal = [
-      "Dog",
-      "Cat",
-      "Cow",
-      "Buffalow",
-      "Fish",
-      "Camel",
-      "Fox",
-      "snake",
-      "Camel",
-      "Fox",
-      "snake",
-    ];
+    // bool isfav = true;
+    List animal = [];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text("TODOOO App"),
           backgroundColor: const Color.fromARGB(255, 70, 244, 54),
         ),
-        body: ListView.separated(
-          separatorBuilder: (context, index) {
+        body: ListView.builder(
+          : (context, index) {
             return Divider(height: 2);
           },
           itemCount: animal.length,
           itemBuilder: (context, int index) {
             return ListTile(
-              title: Text("Ashir"),
-              subtitle: Text("Tech"),
-              trailing: IconButton(
-                onPressed: () {
-                  isfav = !isfav;
-                  setState(() {});
-                },
-                icon: Icon(
-                  Icons.add,
-                  color: isfav
-                      ? const Color.fromARGB(255, 59, 121, 255)
-                      : Colors.red,
-                ),
-              ),
+              title: Text(animal[index]),
+            
             );
             // Container(
             //   color: Colors.lightBlueAccent,
@@ -73,6 +49,7 @@ class _MyAppState extends State<MyApp> {
             // );
           },
         ),
+
       ),
     );
   }
