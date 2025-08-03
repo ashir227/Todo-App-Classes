@@ -20,6 +20,11 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: Colors.black,
           title: Text("Todo App !", style: TextStyle(color: Colors.white)),
         ),
+        body: ListView.builder(
+          itemBuilder: (context, int index) {
+            return Container(height: 100, child: Text("data"));
+          },
+        ),
       ),
     );
   }
