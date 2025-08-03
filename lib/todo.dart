@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    bool isfav = true;
     List animal = [
       "Dog",
       "Cat",
@@ -39,7 +40,37 @@ class _MyAppState extends State<MyApp> {
           },
           itemCount: animal.length,
           itemBuilder: (context, int index) {
-            return Container(height: 70, child: Text(animal[index]));
+            return ListTile(
+              title: Text("Ashir"),
+              subtitle: Text("Tech"),
+              trailing: IconButton(
+                onPressed: () {
+                  isfav = !isfav;
+                  setState(() {});
+                },
+                icon: Icon(
+                  Icons.add,
+                  color: isfav
+                      ? const Color.fromARGB(255, 59, 121, 255)
+                      : Colors.red,
+                ),
+              ),
+            );
+            // Container(
+            //   color: Colors.lightBlueAccent,
+            //   height: 70,
+            //   child: Column(
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            //       Text(animal[index]),
+            //       Row(
+            //         mainAxisAlignment: MainAxisAlignment.center,
+            //         children: [Text(animal[index])],
+            //       ),
+            //       Text(animal[index]),
+            //     ],
+            //   ),
+            // );
           },
         ),
       ),
