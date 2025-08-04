@@ -17,6 +17,7 @@ class _TodoAppState extends State<TodoApp> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           myfile.add(mycon.text);
+          setState(() {});
         },
         child: Text(
           "+",
