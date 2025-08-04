@@ -15,7 +15,17 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     // bool isfav = true;
-    List animal = [];
+    List animal = [
+      "Dog",
+      "Cat",
+      "Fish",
+      "Horse",
+      "Zarrafa",
+      "Buffalo",
+      "Unicorn",
+      "Parrot",
+      "Sparrow",
+    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -23,33 +33,25 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: const Color.fromARGB(255, 70, 244, 54),
         ),
         body: ListView.builder(
-          : (context, index) {
-            return Divider(height: 2);
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 15),
+              child: ListTile(
+                title: Text(animal[index]),
+                tileColor: Colors.grey,
+              ),
+            );
           },
           itemCount: animal.length,
-          itemBuilder: (context, int index) {
-            return ListTile(
-              title: Text(animal[index]),
-            
-            );
-            // Container(
-            //   color: Colors.lightBlueAccent,
-            //   height: 70,
-            //   child: Column(
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     children: [
-            //       Text(animal[index]),
-            //       Row(
-            //         mainAxisAlignment: MainAxisAlignment.center,
-            //         children: [Text(animal[index])],
-            //       ),
-            //       Text(animal[index]),
-            //     ],
-            //   ),
-            // );
-          },
+          // separatorBuilder: (context, index) {
+          //   return Divider(
+          //     height: 50,
+          //     thickness: 2,
+          //     indent: 6.7,
+          //     color: Colors.amber,
+          //   );
+          // },
         ),
-
       ),
     );
   }
