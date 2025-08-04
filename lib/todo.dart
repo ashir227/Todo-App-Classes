@@ -40,7 +40,7 @@ class _TodoAppState extends State<TodoApp> {
                 width: double.infinity,
               ),
 
-              TextField(),
+              TextField(controller: mycon),
               Container(
                 // color: Colors.blueGrey,
                 height: 600,
