@@ -9,10 +9,20 @@ class TodoApp extends StatefulWidget {
 }
 
 class _TodoAppState extends State<TodoApp> {
-  List myfile = ["Ashir"];
+  TextEditingController mycon = TextEditingController();
+  List myfile = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          myfile.add(mycon.text);
+        },
+        child: Text(
+          "+",
+          style: TextStyle(fontSize: 36, fontWeight: FontWeight.w500),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -27,14 +37,15 @@ class _TodoAppState extends State<TodoApp> {
 
                 height: 250,
                 width: double.infinity,
-                child: Column(),
               ),
+
+              TextField(),
               Container(
-                color: Colors.blueGrey,
+                // color: Colors.blueGrey,
                 height: 600,
                 // padding: EdgeInsets.only(bottom: 200),
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 30),
+                margin: EdgeInsets.symmetric(horizontal: 15),
                 child: ListView.builder(
                   itemBuilder: (context, index) {
                     return ListTile(
@@ -43,9 +54,9 @@ class _TodoAppState extends State<TodoApp> {
                       trailing: Icon(Icons.check_box_outline_blank),
                     );
                   },
+                  itemCount: 3,
                 ),
               ),
-              FloatingActionButton(onPressed: () {}),
             ],
           ),
         ),
