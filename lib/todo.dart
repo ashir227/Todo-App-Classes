@@ -13,6 +13,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List animal = ["Dog", "Cat"];
+  TextEditingController mycontrol = TextEditingController();
   @override
   Widget build(BuildContext context) {
     // bool isfav = true;
@@ -20,8 +21,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("TODOOO App"),
-          backgroundColor: const Color.fromARGB(255, 70, 244, 54),
+          title: TextField(
+            controller: mycontrol,
+            decoration: InputDecoration(hintText: "Add animal..."),
+            style: TextStyle(color: Colors.white),
+          ),
+          // backgroundColor: const Color.fromARGB(255, 70, 244, 54),
         ),
         body: ListView.builder(
           itemBuilder: (context, index) {
@@ -44,7 +49,8 @@ class _MyAppState extends State<MyApp> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            animal.add("Students");
+            animal.add(mycontrol.text); // ✅ Fix is here
+            mycontrol.clear(); // optional: clears the input field
             setState(() {});
           },
           child: Text("+", style: TextStyle(fontSize: 30)),
