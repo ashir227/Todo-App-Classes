@@ -16,12 +16,21 @@ class _TodoAppState extends State<TodoApp> {
         child: Column(
           children: [
             Container(
-              color: Colors.blue,
-              height: 200,
-              child: Column(children: [
-            
-          ],
-        ),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 54, 11, 228),
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(80),
+                ),
+              ),
+              width: double.infinity,
+              height: 500,
+
+              child: Container(
+                color: Colors.amber,
+                height: 800,
+                width: 100,
+                child: Column(),
+              ),
             ),
           ],
         ),
