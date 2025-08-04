@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/main.dart';
 
 class TodoApp extends StatefulWidget {
   const TodoApp({super.key});
@@ -13,10 +14,16 @@ class _TodoAppState extends State<TodoApp> {
     return Scaffold(
       body: Container(
         child: Column(
-          children: [Container(height: 200, child: Column(children: [
+          children: [
+            Container(
+              color: Colors.blue,
+              height: 200,
+              child: Column(children: [
             
           ],
-        ))],
+        ),
+            ),
+          ],
         ),
       ),
     );
