@@ -12,20 +12,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  List animal = ["Dog", "Cat"];
   @override
   Widget build(BuildContext context) {
     // bool isfav = true;
-    List animal = [
-      "Dog",
-      "Cat",
-      "Fish",
-      "Horse",
-      "Zarrafa",
-      "Buffalo",
-      "Unicorn",
-      "Parrot",
-      "Sparrow",
-    ];
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -39,18 +30,24 @@ class _MyAppState extends State<MyApp> {
               child: ListTile(
                 title: Text(animal[index]),
                 tileColor: Colors.grey,
+                trailing: IconButton(
+                  onPressed: () {
+                    animal.removeAt(index);
+                    setState(() {});
+                  },
+                  icon: Icon(Icons.delete),
+                ),
               ),
             );
           },
           itemCount: animal.length,
-          // separatorBuilder: (context, index) {
-          //   return Divider(
-          //     height: 50,
-          //     thickness: 2,
-          //     indent: 6.7,
-          //     color: Colors.amber,
-          //   );
-          // },
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            animal.add("Students");
+            setState(() {});
+          },
+          child: Text("+", style: TextStyle(fontSize: 30)),
         ),
       ),
     );
