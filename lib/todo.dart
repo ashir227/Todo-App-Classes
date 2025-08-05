@@ -53,7 +53,8 @@ class _TodoAppState extends State<TodoApp> {
                 child: ListView.builder(
                   itemBuilder: (context, index) {
                     return ListTile(
-                      title: Text(myfile[index]),
+                      //i start to this line after namaz
+                      title: Text(myfile[index]["title"]),
                       subtitle: Text("Ashu Baba"),
                       trailing: IconButton(
                         onPressed: () {
