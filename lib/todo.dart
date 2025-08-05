@@ -10,13 +10,15 @@ class TodoApp extends StatefulWidget {
 
 class _TodoAppState extends State<TodoApp> {
   TextEditingController mycon = TextEditingController();
-  Map myfile = {};
+  List<Map<String, dynamic>> myfile = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          myfile.add(mycon.text);
+          if (mycon.text.isNotEmpty) {
+            myfile.add({"title": mycon.text, "done": false});
+          }
           mycon.clear();
           setState(() {});
         },
@@ -51,14 +53,7 @@ class _TodoAppState extends State<TodoApp> {
                 child: ListView.builder(
                   itemBuilder: (context, index) {
                     return ListTile(
-                      title: Text(
-                        myfile[index]["My App"],
-                        style: TextStyle(
-                          decoration: myfile[index]["done"]
-                              ? TextDecoration.lineThrough
-                              : TextDecoration.none,
-                        ),
-                      ),
+                      title: Text(myfile[index]),
                       subtitle: Text("Ashu Baba"),
                       trailing: IconButton(
                         onPressed: () {
