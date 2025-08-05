@@ -54,14 +54,25 @@ class _TodoAppState extends State<TodoApp> {
                   itemBuilder: (context, index) {
                     return ListTile(
                       //i start to this line after namaz
-                      title: Text(myfile[index]["title"]),
+                      title: Text(
+                        myfile[index]["title"],
+                        style: TextStyle(
+                          decoration: myfile[index]["done"]
+                              ? TextDecoration.lineThrough
+                              : TextDecoration.none,
+                        ),
+                      ),
                       subtitle: Text("Ashu Baba"),
                       trailing: IconButton(
                         onPressed: () {
-                          myfile.removeAt(index);
+                          myfile[index]["done"] = !myfile[index]["done"];
                           setState(() {});
                         },
-                        icon: Icon(Icons.check_box),
+                        icon: Icon(
+                          myfile[index]["done"]
+                              ? Icons.check_box
+                              : Icons.check_box_outline_blank,
+                        ),
                       ),
                     );
                   },
