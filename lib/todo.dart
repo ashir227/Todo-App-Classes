@@ -17,7 +17,11 @@ class _TodoAppState extends State<TodoApp> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (mycon.text.isNotEmpty) {
-            myfile.add({"title": mycon.text, "done": false});
+            myfile.add({
+              "title": mycon.text,
+              "done": false,
+              "sub title": "Ashu Bhai",
+            });
           }
           mycon.clear();
           setState(() {});
@@ -27,6 +31,7 @@ class _TodoAppState extends State<TodoApp> {
           style: TextStyle(fontSize: 36, fontWeight: FontWeight.w500),
         ),
       ),
+
       body: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -43,7 +48,6 @@ class _TodoAppState extends State<TodoApp> {
                 width: double.infinity,
               ),
 
-              TextField(controller: mycon),
               Container(
                 // color: Colors.blueGrey,
                 height: 600,
@@ -57,12 +61,19 @@ class _TodoAppState extends State<TodoApp> {
                       title: Text(
                         myfile[index]["title"],
                         style: TextStyle(
+                          fontWeight: myfile[index]["done"]
+                              ? FontWeight.w700
+                              : FontWeight.w400,
+                        ),
+                      ),
+                      subtitle: Text(
+                        myfile[index]["title"],
+                        style: TextStyle(
                           decoration: myfile[index]["done"]
-                              ? TextDecoration.lineThrough
+                              ? TextDecoration.underline
                               : TextDecoration.none,
                         ),
                       ),
-                      subtitle: Text("Ashu Baba"),
                       trailing: IconButton(
                         onPressed: () {
                           myfile[index]["done"] = !myfile[index]["done"];
@@ -71,7 +82,7 @@ class _TodoAppState extends State<TodoApp> {
                         icon: Icon(
                           myfile[index]["done"]
                               ? Icons.check_box
-                              : Icons.check_box_outline_blank,
+                              : Icons.check_circle_outline,
                         ),
                       ),
                     );
@@ -79,8 +90,23 @@ class _TodoAppState extends State<TodoApp> {
                   itemCount: myfile.length,
                 ),
               ),
+              Container(
+                color: Colors.red,
+                height: 100,
+                width: 100,
+                child: TextField(controller: mycon),
+              ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.blueGrey,
+        padding: EdgeInsets.all(12),
+        child: Text(
+          "Made with ❤️ by Ashir",
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.white, fontSize: 16),
         ),
       ),
     );
