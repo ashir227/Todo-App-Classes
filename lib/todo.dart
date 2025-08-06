@@ -40,22 +40,34 @@ class _TodoAppState extends State<TodoApp> {
                     title: Text(
                       todo[index]["title"],
                       style: TextStyle(
-                        fontWeight: todo[index]["done"]
-                            ? FontWeight.w700
-                            : FontWeight.w400,
+                        decoration: todo[index]["done"]
+                            ? TextDecoration.lineThrough
+                            : TextDecoration.none,
                       ),
                       // tileColor: const Color.fromARGB(255, 146, 122, 210),
                     ),
-                    trailing: IconButton(
-                      onPressed: () {
-                        todo[index]["done"] = !todo[index]["done"];
-                        setState(() {});
-                      },
-                      icon: Icon(
-                        todo[index]["done"]
-                            ? Icons.check_box
-                            : Icons.check_box_outline_blank,
-                      ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            todo[index]["done"] = !todo[index]["done"];
+                            setState(() {});
+                          },
+                          icon: Icon(
+                            todo[index]["done"]
+                                ? Icons.check_box
+                                : Icons.check_box_outline_blank,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            todo.removeAt(index);
+                            setState(() {});
+                          },
+                          icon: Icon(Icons.delete),
+                        ),
+                      ],
                     ),
                   );
                 },
