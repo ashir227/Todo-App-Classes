@@ -1,114 +1,105 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/main.dart';
 
 class TodoApp extends StatefulWidget {
   const TodoApp({super.key});
 
   @override
-  State<TodoApp> createState() => _TodoAppState();
+  State<TodoApp> createState() => _TodoPageState();
 }
 
-class _TodoAppState extends State<TodoApp> {
-  TextEditingController mycon = TextEditingController();
+class _TodoPageState extends State<TodoApp> {
   List<Map<String, dynamic>> myfile = [];
+  TextEditingController mycon = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          if (mycon.text.isNotEmpty) {
-            myfile.add({
-              "title": mycon.text,
-              "done": false,
-              "sub title": "Ashu Bhai",
-            });
-          }
-          mycon.clear();
-          setState(() {});
-        },
-        child: Text(
-          "+",
-          style: TextStyle(fontSize: 36, fontWeight: FontWeight.w500),
-        ),
-      ),
+      appBar: buildAppBar(),
+      body: buildListView(),
+      bottomNavigationBar: buildFooter(context),
+    );
+  }
 
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(219, 7, 10, 226),
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(130),
-                  ),
-                ),
+  // 🔷 App Bar
+  AppBar buildAppBar() {
+    return AppBar(title: Text("Todo"), centerTitle: true);
+  }
 
-                height: 250,
-                width: double.infinity,
-              ),
-
-              Container(
-                // color: Colors.blueGrey,
-                height: 600,
-                // padding: EdgeInsets.only(bottom: 200),
-                width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 15),
-                child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      //i start to this line after namaz
-                      title: Text(
-                        myfile[index]["title"],
-                        style: TextStyle(
-                          fontWeight: myfile[index]["done"]
-                              ? FontWeight.w700
-                              : FontWeight.w400,
-                        ),
-                      ),
-                      subtitle: Text(
-                        myfile[index]["title"],
-                        style: TextStyle(
-                          decoration: myfile[index]["done"]
-                              ? TextDecoration.underline
-                              : TextDecoration.none,
-                        ),
-                      ),
-                      trailing: IconButton(
-                        onPressed: () {
-                          myfile[index]["done"] = !myfile[index]["done"];
-                          setState(() {});
-                        },
-                        icon: Icon(
-                          myfile[index]["done"]
-                              ? Icons.check_box
-                              : Icons.check_circle_outline,
-                        ),
-                      ),
-                    );
-                  },
-                  itemCount: myfile.length,
-                ),
-              ),
-              Container(
-                color: Colors.red,
-                height: 100,
-                width: 100,
-                child: TextField(controller: mycon),
-              ),
-            ],
+  // 🔷 ListView for showing todo items
+  Widget buildListView() {
+    return ListView.builder(
+      padding: EdgeInsets.only(bottom: 100),
+      itemCount: myfile.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(
+            myfile[index]["title"],
+            style: TextStyle(
+              decoration: myfile[index]["done"]
+                  ? TextDecoration.lineThrough
+                  : TextDecoration.none,
+            ),
           ),
-        ),
+          trailing: IconButton(
+            onPressed: () {
+              toggleDone(index);
+            },
+            icon: Icon(
+              myfile[index]["done"]
+                  ? Icons.check_box
+                  : Icons.check_box_outline_blank,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  // 🔷 Footer: TextField + Add Button
+  Widget buildFooter(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom + 12,
+        left: 10,
+        right: 10,
+        top: 10,
       ),
-      bottomNavigationBar: Container(
-        color: Colors.blueGrey,
-        padding: EdgeInsets.all(12),
-        child: Text(
-          "Made with ❤️ by Ashir",
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white, fontSize: 16),
-        ),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: mycon,
+              decoration: InputDecoration(
+                hintText: "Enter task...",
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+          SizedBox(width: 10),
+          FloatingActionButton(
+            mini: true,
+            onPressed: addTodoItem,
+            child: Icon(Icons.add),
+          ),
+        ],
       ),
     );
+  }
+
+  // 🔷 Logic: Add new todo
+  void addTodoItem() {
+    if (mycon.text.isNotEmpty) {
+      setState(() {
+        myfile.add({"title": mycon.text, "done": false});
+        mycon.clear();
+      });
+    }
+  }
+
+  // 🔷 Logic: Toggle checkbox
+  void toggleDone(int index) {
+    setState(() {
+      myfile[index]["done"] = !myfile[index]["done"];
+    });
   }
 }
