@@ -11,6 +11,7 @@ class TodoApp extends StatefulWidget {
 }
 
 class _TodoAppState extends State<TodoApp> {
+  List<Map<String, dynamic>> todo = [];
   TextEditingController mycontrol = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class _TodoAppState extends State<TodoApp> {
         ),
       ),
       body: Container(
-        height: double.maxFinite,
+        height: double.infinity,
         width: double.infinity,
         color: const Color.fromARGB(255, 171, 126, 220),
         child: Column(
@@ -36,19 +37,51 @@ class _TodoAppState extends State<TodoApp> {
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text("Ashir"),
-                    subtitle: Text("MY"),
-                    tileColor: const Color.fromARGB(255, 124, 93, 211),
+                    title: Text(
+                      todo[index]["title"],
+                      style: TextStyle(
+                        fontWeight: todo[index]["done"]
+                            ? FontWeight.w700
+                            : FontWeight.w400,
+                      ),
+                      // tileColor: const Color.fromARGB(255, 146, 122, 210),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {
+                        todo[index]["done"] = !todo[index]["done"];
+                        setState(() {});
+                      },
+                      icon: Icon(
+                        todo[index]["done"]
+                            ? Icons.check_box
+                            : Icons.check_box_outline_blank,
+                      ),
+                    ),
                   );
                 },
-                itemCount: 2,
+                itemCount: todo.length,
+              ),
+            ),
+            Container(
+              child: TextField(
+                controller: mycontrol,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Text",
+                ),
               ),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          if (mycontrol.text.isNotEmpty) {
+            todo.add({"title": mycontrol.text, "done": false});
+            mycontrol.clear();
+            setState(() {});
+          }
+        },
         child: Icon(Icons.star_purple500_sharp),
       ),
     );
