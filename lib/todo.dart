@@ -11,6 +11,7 @@ class TodoApp extends StatefulWidget {
 }
 
 class _TodoAppState extends State<TodoApp> {
+  TextEditingController mycontrol = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,31 @@ class _TodoAppState extends State<TodoApp> {
           ),
         ),
       ),
-      body: Container(),
+      body: Container(
+        height: double.maxFinite,
+        width: double.infinity,
+        color: const Color.fromARGB(255, 171, 126, 220),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text("Ashir"),
+                    subtitle: Text("MY"),
+                    tileColor: const Color.fromARGB(255, 124, 93, 211),
+                  );
+                },
+                itemCount: 2,
+              ),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.star_purple500_sharp),
+      ),
     );
   }
 }
