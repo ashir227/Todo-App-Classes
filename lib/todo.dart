@@ -38,6 +38,17 @@ class _TodoAppState extends State<TodoApp> {
                 itemBuilder: (context, index) {
                   return Dismissible(
                     key: todo[index]["title"] + [index].toString(),
+                    direction: DismissDirection.endToStart,
+                    onDismissed: (direction) {
+                      todo.removeAt(index);
+                      setState(() {});
+                    },
+                    background: Container(
+                      color: Colors.red,
+                      alignment: Alignment.centerRight,
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: const Icon(Icons.delete, color: Colors.white),
+                    ),
                     child: ListTile(
                       title: Text(
                         todo[index]["title"],
