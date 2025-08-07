@@ -36,38 +36,41 @@ class _TodoAppState extends State<TodoApp> {
             Expanded(
               child: ListView.builder(
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(
-                      todo[index]["title"],
-                      style: TextStyle(
-                        decoration: todo[index]["done"]
-                            ? TextDecoration.lineThrough
-                            : TextDecoration.none,
+                  return Dismissible(
+                    key: todo[index]["title"] + [index].toString(),
+                    child: ListTile(
+                      title: Text(
+                        todo[index]["title"],
+                        style: TextStyle(
+                          decoration: todo[index]["done"]
+                              ? TextDecoration.lineThrough
+                              : TextDecoration.none,
+                        ),
+                        // tileColor: const Color.fromARGB(255, 146, 122, 210),
                       ),
-                      // tileColor: const Color.fromARGB(255, 146, 122, 210),
-                    ),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            todo[index]["done"] = !todo[index]["done"];
-                            setState(() {});
-                          },
-                          icon: Icon(
-                            todo[index]["done"]
-                                ? Icons.check_box
-                                : Icons.check_box_outline_blank,
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              todo[index]["done"] = !todo[index]["done"];
+                              setState(() {});
+                            },
+                            icon: Icon(
+                              todo[index]["done"]
+                                  ? Icons.check_box
+                                  : Icons.check_box_outline_blank,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            todo.removeAt(index);
-                            setState(() {});
-                          },
-                          icon: Icon(Icons.delete),
-                        ),
-                      ],
+                          IconButton(
+                            onPressed: () {
+                              todo.removeAt(index);
+                              setState(() {});
+                            },
+                            icon: Icon(Icons.delete),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
