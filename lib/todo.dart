@@ -37,7 +37,7 @@ class _TodoAppState extends State<TodoApp> {
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   return Dismissible(
-                    key: todo[index]["title"] + [index].toString(),
+                    key: Key(todo[index]["title"] + (index.toString())),
                     direction: DismissDirection.endToStart,
                     onDismissed: (direction) {
                       todo.removeAt(index);
