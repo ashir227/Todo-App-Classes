@@ -18,6 +18,7 @@ class _TodoAppState extends State<TodoApp> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
+
         title: RichText(
           text: TextSpan(
             children: [
@@ -26,6 +27,7 @@ class _TodoAppState extends State<TodoApp> {
             ],
           ),
         ),
+        leading: IconButton(onPressed: () {}, icon: Icon(Icons.undo)),
       ),
       body: Container(
         height: double.infinity,
