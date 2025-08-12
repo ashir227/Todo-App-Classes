@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:todo_app/screens/About_screen.dart';
 // import 'package:TodoApp/main.dart';
 
 class TodoApp extends StatefulWidget {
@@ -27,12 +28,21 @@ class _TodoAppState extends State<TodoApp> {
             ],
           ),
         ),
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.undo)),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const aboutus()),
+            );
+          },
+          icon: Icon(Icons.undo),
+        ),
       ),
       body: Container(
         height: double.infinity,
         width: double.infinity,
         color: const Color.fromARGB(255, 124, 109, 234),
+
         child: Column(
           children: [
             Expanded(
