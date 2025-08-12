@@ -41,7 +41,7 @@ class _TodoAppState extends State<TodoApp> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        color: const Color.fromARGB(255, 236, 137, 231),
+        color: const Color.fromARGB(255, 217, 94, 164),
 
         child: Column(
           children: [
