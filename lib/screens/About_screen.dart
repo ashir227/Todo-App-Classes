@@ -7,7 +7,10 @@ class aboutus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("About US Screen")),
+      appBar: AppBar(
+        title: Text("About US Screen"),
+        backgroundColor: Colors.red,
+      ),
       body: ElevatedButton(
         onPressed: () {
           Navigator.pushReplacement(
