@@ -7,7 +7,12 @@ class NextScr extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("NextGen")),
-      body: ElevatedButton(onPressed: () {}, child: Text("Nextscreen")),
+      body: ElevatedButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        child: Text("Nextscreen"),
+      ),
     );
   }
 }
