@@ -45,17 +45,17 @@ class _aboutusState extends State<aboutus> {
             ),
           ),
 
-          Container(
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const NextScr()),
-                );
-              },
-              child: Text("About Us"),
-            ),
-          ),
+          // Container(
+          //   child: ElevatedButton(
+          //     onPressed: () {
+          //       Navigator.pushReplacement(
+          //         context,
+          //         MaterialPageRoute(builder: (context) => const NextScr()),
+          //       );
+          //     },
+          //     child: Text("About Us"),
+          //   ),
+          // ),
         ],
       ),
     );
