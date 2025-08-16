@@ -28,7 +28,15 @@ class _aboutusState extends State<aboutus> {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              NextScr(stddata: Stdinfo[index]),
+                        ),
+                      );
+                    },
                     title: Text(Stdinfo[index]['name']),
                     tileColor: Colors.grey,
                   ),
