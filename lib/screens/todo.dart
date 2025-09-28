@@ -46,7 +46,7 @@ class _TodoAppState extends State<TodoApp> {
         child: Column(
           children: [
             Expanded(
-              child: ListView.builder(
+              child: ListView.separated(
                 itemBuilder: (context, index) {
                   return Dismissible(
                     key: Key(todo[index]["title"] + (index.toString())),
@@ -98,6 +98,7 @@ class _TodoAppState extends State<TodoApp> {
                   );
                 },
                 itemCount: todo.length,
+                separatorBuilder: (context, index) => Divider(height: 10),
               ),
             ),
             Container(
