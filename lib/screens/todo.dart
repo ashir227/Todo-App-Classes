@@ -52,8 +52,9 @@ class _TodoAppState extends State<TodoApp> {
                     key: Key(todo[index]["title"] + (index.toString())),
                     direction: DismissDirection.endToStart,
                     onDismissed: (direction) {
-                      todo.removeAt(index);
-                      setState(() {});
+                      setState(() {
+                        todo.removeAt(index);
+                      });
                     },
                     background: Container(
                       color: Colors.red,
