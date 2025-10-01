@@ -13,6 +13,7 @@ class TodoApp extends StatefulWidget {
 
 class _TodoAppState extends State<TodoApp> {
   List<Map<String, dynamic>> todo = [];
+
   TextEditingController mycontrol = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -57,7 +58,7 @@ class _TodoAppState extends State<TodoApp> {
                       });
                     },
                     background: Container(
-                      color: Colors.red,
+                      color: Colors.redAccent,
                       alignment: Alignment.centerRight,
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: const Icon(Icons.delete, color: Colors.white),
