@@ -108,7 +108,7 @@ class _TodoAppState extends State<TodoApp> {
                 controller: mycontrol,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "Text",
+                  hintText: "Texthere",
                 ),
               ),
             ),
