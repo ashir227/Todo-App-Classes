@@ -24,8 +24,8 @@ class _TodoAppState extends State<TodoApp> {
         title: RichText(
           text: TextSpan(
             children: [
-              TextSpan(text: "Tech", style: TextStyle(fontSize: 30)),
-              TextSpan(text: " Guru", style: TextStyle(fontSize: 30)),
+              TextSpan(text: "TechO", style: TextStyle(fontSize: 30)),
+              TextSpan(text: " Guru JI", style: TextStyle(fontSize: 30)),
             ],
           ),
         ),
