@@ -38,17 +38,31 @@ class _ScreensState extends State<Screens> {
               ),
             ),
             SizedBox(
-              width: double.infinity,
+              // width: double.infinity,
+              width: 330,
               child: ElevatedButton(
                 onPressed: () {},
-                child: Text("Login", style: TextStyle(fontSize: 22)),
+                child: Text(
+                  "Login",
+                  style: TextStyle(fontSize: 22, color: Colors.white),
+                ),
+
                 style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 33),
                   backgroundColor: Colors.black,
                   side: BorderSide(color: Colors.yellow, width: sqrt1_2),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(22),
+                    borderRadius: BorderRadiusGeometry.circular(10),
                   ),
                 ),
+              ),
+            ),
+            SizedBox(height: 10),
+            SizedBox(
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                child: Text("Sign Up"),
               ),
             ),
           ],
