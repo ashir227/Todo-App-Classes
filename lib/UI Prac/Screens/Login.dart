@@ -9,6 +9,7 @@ class Loginscr extends StatefulWidget {
 }
 
 class _LoginscrState extends State<Loginscr> {
+  bool ishide = false;
   bool isHover = false;
   TextEditingController emailcon = TextEditingController();
   TextEditingController passwordcon = TextEditingController();
@@ -91,12 +92,19 @@ class _LoginscrState extends State<Loginscr> {
                         style: TextStyle(color: Colors.yellow),
                         controller: passwordcon,
 
-                        obscureText: true,
+                        obscureText: ishide,
                         obscuringCharacter: "*",
                         decoration: InputDecoration(
-                          suffixIcon: Icon(
-                            Icons.remove_red_eye,
-                            color: Colors.yellow,
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              ishide ? Icons.visibility_off : Icons.visibility,
+                              color: Colors.yellow,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                ishide = !ishide;
+                              });
+                            },
                           ),
                           hintStyle: TextStyle(color: Colors.yellow),
                           hintText: "Password",
