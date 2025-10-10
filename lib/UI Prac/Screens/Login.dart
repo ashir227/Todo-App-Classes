@@ -12,7 +12,9 @@ class _LoginscrState extends State<Loginscr> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+
       body: Container(
+        margin: EdgeInsets.symmetric(horizontal: 15),
         padding: EdgeInsets.only(top: 70),
 
         width: double.infinity,
@@ -54,11 +56,33 @@ class _LoginscrState extends State<Loginscr> {
                 SizedBox(height: 70),
                 Column(
                   children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: "Email",
-                        prefixIcon: Icon(Icons.email_outlined),
-                        iconColor: Colors.yellow,
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 13),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.yellow,
+                              width: 0.7,
+                            ),
+                          ),
+                          hintText: "Email",
+                          hintStyle: TextStyle(color: Colors.yellow),
+                          prefixIcon: Icon(
+                            Icons.email_outlined,
+                            color: Colors.yellow,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 13),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.yellow),
+                          hintText: "Password",
+                        ),
                       ),
                     ),
                   ],
