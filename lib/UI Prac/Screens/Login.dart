@@ -89,6 +89,29 @@ class _LoginscrState extends State<Loginscr> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 30),
+                    Container(
+                      width: 330,
+                      height: 45,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(
+                            210,
+                            227,
+                            230,
+                            150,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadiusGeometry.circular(8),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          "Login",
+                          style: TextStyle(fontSize: 17, color: Colors.black),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ],
