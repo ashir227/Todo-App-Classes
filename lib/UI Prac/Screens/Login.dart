@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/UI%20Prac/Screens/Home.dart';
 
 class Loginscr extends StatefulWidget {
   const Loginscr({super.key});
@@ -8,10 +9,15 @@ class Loginscr extends StatefulWidget {
 }
 
 class _LoginscrState extends State<Loginscr> {
+  bool isHover = false;
+  TextEditingController emailcon = TextEditingController();
+  TextEditingController passwordcon = TextEditingController();
+  String Correctemail = "Ashir@gamail.com";
+  String CorrectPass = "ashir123";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.red,
 
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 15),
@@ -67,6 +73,7 @@ class _LoginscrState extends State<Loginscr> {
                             ),
                           ),
                           hintText: "Email",
+                          hoverColor: Colors.orange,
                           hintStyle: TextStyle(color: Colors.yellow),
                           prefixIcon: Icon(
                             Icons.email_outlined,
@@ -105,7 +112,23 @@ class _LoginscrState extends State<Loginscr> {
                             borderRadius: BorderRadiusGeometry.circular(8),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          if (emailcon.text == Correctemail &&
+                              passwordcon.text == CorrectPass) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Home(),
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text("Wrong Email or Password"),
+                              ),
+                            );
+                          }
+                        },
                         child: Text(
                           "Login",
                           style: TextStyle(fontSize: 17, color: Colors.black),
