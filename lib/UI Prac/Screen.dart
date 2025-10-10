@@ -61,8 +61,14 @@ class _ScreensState extends State<Screens> {
             SizedBox(
               child: ElevatedButton(
                 onPressed: () {},
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                child: Text("Sign Up"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  side: BorderSide(color: Colors.yellow),
+                ),
+                child: Text(
+                  "Sign Up",
+                  style: TextStyle(color: Colors.white, fontSize: 17),
+                ),
               ),
             ),
           ],
