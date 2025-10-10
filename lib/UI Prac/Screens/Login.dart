@@ -12,12 +12,12 @@ class _LoginscrState extends State<Loginscr> {
   bool isHover = false;
   TextEditingController emailcon = TextEditingController();
   TextEditingController passwordcon = TextEditingController();
-  String Correctemail = "Ashir@gamail.com";
+  String Correctemail = "Ashir@gmail.com";
   String CorrectPass = "ashir123";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.black,
 
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 15),
@@ -65,6 +65,8 @@ class _LoginscrState extends State<Loginscr> {
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 13),
                       child: TextField(
+                        style: TextStyle(color: Colors.yellow),
+                        controller: emailcon,
                         decoration: InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
@@ -86,7 +88,16 @@ class _LoginscrState extends State<Loginscr> {
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 13),
                       child: TextField(
+                        style: TextStyle(color: Colors.yellow),
+                        controller: passwordcon,
+
+                        obscureText: true,
+                        obscuringCharacter: "*",
                         decoration: InputDecoration(
+                          suffixIcon: Icon(
+                            Icons.remove_red_eye,
+                            color: Colors.yellow,
+                          ),
                           hintStyle: TextStyle(color: Colors.yellow),
                           hintText: "Password",
                           prefixIcon: Icon(
