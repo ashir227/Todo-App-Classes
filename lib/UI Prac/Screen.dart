@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class Screens extends StatefulWidget {
@@ -35,10 +37,19 @@ class _ScreensState extends State<Screens> {
                 ],
               ),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text("Login"),
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text("Login", style: TextStyle(fontSize: 22)),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  side: BorderSide(color: Colors.yellow, width: sqrt1_2),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(22),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
