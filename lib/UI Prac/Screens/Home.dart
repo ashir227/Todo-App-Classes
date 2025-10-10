@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
         height: double.infinity,
         width: double.infinity,
         child: Container(
-          height: 100,
+          // height: 100,
           width: 200,
           margin: EdgeInsets.only(top: 35),
           child: Column(
