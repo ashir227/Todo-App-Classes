@@ -77,7 +77,7 @@ class _ScreensState extends State<Screens> {
                 ),
                 child: Text(
                   "Sign Up",
-                  style: TextStyle(color: Colors.black, fontSize: 22),
+                  style: TextStyle(color: Colors.black, fontSize: 17),
                 ),
               ),
             ),

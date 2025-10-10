@@ -22,6 +22,7 @@ class _LoginscrState extends State<Loginscr> {
           child: Column(
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   IconButton(
                     onPressed: () {
