@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:todo_app/UI%20Prac/Screens/Login.dart';
 
 class Screens extends StatefulWidget {
   const Screens({super.key});
@@ -41,7 +42,12 @@ class _ScreensState extends State<Screens> {
               // width: double.infinity,
               width: 330,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Loginscr()),
+                  );
+                },
                 child: Text(
                   "Login",
                   style: TextStyle(fontSize: 22, color: Colors.white),
@@ -59,15 +65,19 @@ class _ScreensState extends State<Screens> {
             ),
             SizedBox(height: 10),
             SizedBox(
+              width: 330,
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
+                  backgroundColor: const Color.fromARGB(210, 227, 230, 150),
                   side: BorderSide(color: Colors.yellow),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(10),
+                  ),
                 ),
                 child: Text(
                   "Sign Up",
-                  style: TextStyle(color: Colors.white, fontSize: 17),
+                  style: TextStyle(color: Colors.black, fontSize: 33),
                 ),
               ),
             ),
