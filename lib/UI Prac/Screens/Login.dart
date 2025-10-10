@@ -82,6 +82,10 @@ class _LoginscrState extends State<Loginscr> {
                         decoration: InputDecoration(
                           hintStyle: TextStyle(color: Colors.yellow),
                           hintText: "Password",
+                          prefixIcon: Icon(
+                            Icons.security_outlined,
+                            color: Colors.yellow,
+                          ),
                         ),
                       ),
                     ),
