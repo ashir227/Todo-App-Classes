@@ -68,13 +68,31 @@ class _HomeState extends State<Home> {
               height: 65,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(210, 241, 244, 160),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusGeometry.circular(10),
                   ),
                 ),
 
                 onPressed: () {},
-                child: Text("Add New Patient", style: TextStyle(fontSize: 21)),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.add_circle_outline,
+                      color: Colors.black,
+                      size: 33,
+                    ),
+                    SizedBox(width: 25),
+                    Text(
+                      "Add New Patient",
+                      style: TextStyle(
+                        fontSize: 21,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
