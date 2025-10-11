@@ -12,27 +12,47 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.yellow,
-        height: double.infinity,
-        width: double.infinity,
-        child: Container(
-          // height: 100,
-          width: 200,
-          margin: EdgeInsets.only(top: 35),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      body: Column(
+        children: [
+          Container(
+            // height: 100,
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 35),
+            child: Container(
+              color: Colors.red,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
 
-            children: [
-              IconButton(
-                icon: Icon(Icons.arrow_back, color: Colors.white, size: 30),
-                onPressed: () {
-                  Navigator.pop(context); // 👈 goes back to previous screen
-                },
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.arrow_back, color: Colors.white, size: 30),
+                    onPressed: () {
+                      Navigator.pop(context); // 👈 goes back to previous screen
+                    },
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+          SizedBox(height: 20),
+          Container(
+            height: 200,
+            width: double.infinity,
+            color: const Color.fromARGB(255, 42, 39, 9),
+            child: Column(
+              children: [
+                Text(
+                  "Admin Dashboard",
+                  style: TextStyle(
+                    fontSize: 40,
+                    color: Colors.yellow,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
