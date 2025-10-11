@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/UI%20Prac/Screens/Home.dart';
+import 'package:todo_app/UI_Prac/Screens/Home.dart';
 
 class Loginscr extends StatefulWidget {
   const Loginscr({super.key});

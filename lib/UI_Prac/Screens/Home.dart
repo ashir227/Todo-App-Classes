@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/UI%20Prac/Screens/Login.dart';
+import 'package:todo_app/UI_Prac/Screens/Login.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -36,6 +36,7 @@ class _HomeState extends State<Home> {
             ),
             SizedBox(height: 20),
             Container(
+              color: Colors.red,
               height: 300,
               width: double.infinity,
               // color: Colors.red,
@@ -89,6 +90,38 @@ class _HomeState extends State<Home> {
                         fontSize: 21,
                         color: Colors.black,
                         fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            SizedBox(
+              width: 320,
+              height: 65,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(210, 241, 244, 160),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(10),
+                  ),
+                ),
+                onPressed: () {},
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.remove_circle_outline,
+                      size: 33,
+                      color: Colors.black,
+                    ),
+                    SizedBox(width: 25),
+                    Text(
+                      "Remove Patient",
+                      style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
                       ),
                     ),
                   ],

@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:todo_app/UI%20Prac/Screens/Login.dart';
+import 'package:todo_app/UI_Prac/Screens/Login.dart';
 
 class Screens extends StatefulWidget {
   const Screens({super.key});
