@@ -20,31 +20,23 @@ class _HomeState extends State<Home> {
               // height: 100,
               width: double.infinity,
               margin: EdgeInsets.only(top: 35),
-              child: Container(
-                color: Colors.red,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
 
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                      onPressed: () {
-                        Navigator.pop(
-                          context,
-                        ); // 👈 goes back to previous screen
-                      },
-                    ),
-                  ],
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.arrow_back, color: Colors.white, size: 30),
+                    onPressed: () {
+                      Navigator.pop(context); // 👈 goes back to previous screen
+                    },
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 20),
             Container(
-              height: 200,
+              height: 330,
               width: double.infinity,
               color: const Color.fromARGB(255, 42, 39, 9),
               child: Column(
@@ -61,6 +53,10 @@ class _HomeState extends State<Home> {
                   Text(
                     "Manage patients and appointments",
                     style: TextStyle(color: Colors.white, fontSize: 15),
+                  ),
+                  Image.asset(
+                    "lib/UI Prac/assets/Gold Icon doctor.png",
+                    height: 250,
                   ),
                 ],
               ),
