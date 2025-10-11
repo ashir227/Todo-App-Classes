@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
             ),
             SizedBox(height: 20),
             Container(
-              height: 330,
+              height: 300,
               width: double.infinity,
               // color: Colors.red,
               child: Column(
@@ -60,6 +60,21 @@ class _HomeState extends State<Home> {
                     height: 180,
                   ),
                 ],
+              ),
+            ),
+
+            SizedBox(
+              width: 320,
+              height: 65,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(10),
+                  ),
+                ),
+
+                onPressed: () {},
+                child: Text("Add New Patient", style: TextStyle(fontSize: 21)),
               ),
             ),
           ],
