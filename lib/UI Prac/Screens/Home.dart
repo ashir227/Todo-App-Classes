@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
             Container(
               height: 330,
               width: double.infinity,
-              color: const Color.fromARGB(255, 42, 39, 9),
+              // color: Colors.red,
               child: Column(
                 children: [
                   Text(
@@ -54,9 +54,10 @@ class _HomeState extends State<Home> {
                     "Manage patients and appointments",
                     style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
+                  SizedBox(height: 20),
                   Image.asset(
                     "lib/UI Prac/assets/Gold Icon doctor.png",
-                    height: 250,
+                    height: 180,
                   ),
                 ],
               ),
