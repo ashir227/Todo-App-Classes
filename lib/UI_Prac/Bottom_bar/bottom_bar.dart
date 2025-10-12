@@ -24,21 +24,32 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_select], // 👈 Switches screen
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _select,
-        onTap: (index) {
-          setState(() {
-            _select = index;
-          });
-        },
-        selectedItemColor: Colors.white,
-        unselectedItemColor: const Color.fromARGB(255, 179, 165, 43),
-        backgroundColor: const Color.fromARGB(255, 66, 52, 52),
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Records"),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setting"),
-        ],
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _select,
+
+          type: BottomNavigationBarType.fixed,
+          onTap: (index) {
+            setState(() {
+              _select = index;
+            });
+          },
+          selectedItemColor: Colors.white,
+          unselectedItemColor: const Color.fromARGB(255, 179, 165, 43),
+          backgroundColor: const Color.fromARGB(255, 29, 22, 22),
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Records"),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: "Setting",
+            ),
+          ],
+        ),
       ),
     );
   }
