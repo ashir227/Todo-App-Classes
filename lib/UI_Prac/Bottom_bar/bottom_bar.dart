@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/UI_Prac/Screens/DashboardScreen.dart';
 
 import 'package:todo_app/UI_Prac/Screens/Records.dart';
 import 'package:todo_app/UI_Prac/Screens/Settings.dart';
@@ -13,7 +14,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _select = 0;
 
-  final List<Widget> _pages = [const Home(), const Records(), const Setting()];
+  final List<Widget> _pages = [
+    const DashboardScreen(),
+    const Records(),
+    const Setting(),
+  ];
 
   @override
   Widget build(BuildContext context) {
