@@ -10,6 +10,13 @@ class AddScr extends StatefulWidget {
 class _AddScrState extends State<AddScr> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar());
+    return Scaffold(
+      appBar: AppBar(),
+      body: Container(
+        color: Colors.red,
+        height: 300,
+        child: Column(children: []),
+      ),
+    );
   }
 }
