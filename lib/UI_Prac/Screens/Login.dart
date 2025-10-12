@@ -13,7 +13,7 @@ class _LoginscrState extends State<Loginscr> {
   bool isHover = false;
   TextEditingController emailcon = TextEditingController();
   TextEditingController passwordcon = TextEditingController();
-  String Correctemail = "Ashir@gmail.com";
+  String Correctemail = "ashir@gmail.com";
   String CorrectPass = "ashir123";
   @override
   Widget build(BuildContext context) {
@@ -66,6 +66,7 @@ class _LoginscrState extends State<Loginscr> {
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 13),
                       child: TextField(
+                        textCapitalization: TextCapitalization.none,
                         style: TextStyle(color: Colors.yellow),
                         controller: emailcon,
                         decoration: InputDecoration(
@@ -128,7 +129,7 @@ class _LoginscrState extends State<Loginscr> {
                             150,
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadiusGeometry.circular(8),
+                            borderRadius: BorderRadius.circular(8),
                           ),
                         ),
                         onPressed: () {

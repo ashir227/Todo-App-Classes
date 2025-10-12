@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/UI_Prac/Dashboard_Scrn/Add_Scr.dart';
+import 'package:todo_app/UI_Prac/Dashboard_Scrn/mng_apt.dart';
+import 'package:todo_app/UI_Prac/Dashboard_Scrn/patnt_lst.dart';
+import 'package:todo_app/UI_Prac/Dashboard_Scrn/remv_Scr.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -41,19 +45,42 @@ class DashboardScreen extends StatelessWidget {
           const SizedBox(height: 20),
           Image.asset("lib/assets/doctor.png", height: 180),
           const SizedBox(height: 30),
-          _buildButton(Icons.person_add_alt_1, "Add New Patient"),
+          _buildButton(Icons.person_add_alt_1, "Add New Patient", () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddScr()),
+            );
+          }),
+
           const SizedBox(height: 20),
-          _buildButton(Icons.person_remove, "Remove Patient"),
+          _buildButton(Icons.person_remove, "Remove Patient", () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => removescr()),
+            );
+          }),
+
           const SizedBox(height: 20),
-          _buildButton(Icons.event_note, "Manage Appointments"),
+          _buildButton(Icons.event_note, "Manage Appointments", () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => mang_apit()),
+            );
+          }),
+
           const SizedBox(height: 20),
-          _buildButton(Icons.list_alt, "View Patients List"),
+          _buildButton(Icons.list_alt, "View Patients List", () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const pat_list()),
+            );
+          }),
         ],
       ),
     );
   }
 
-  Widget _buildButton(IconData icon, String text) {
+  Widget _buildButton(IconData icon, String text, VoidCallback onPressed) {
     return SizedBox(
       width: 320,
       height: 65,
@@ -66,7 +93,7 @@ class DashboardScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Row(
           children: [
             Icon(icon, color: Colors.black, size: 30),
