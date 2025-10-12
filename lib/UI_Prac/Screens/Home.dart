@@ -1,211 +1,86 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/UI_Prac/Screens/Login.dart';
-import 'package:todo_app/UI_Prac/Screens/Records.dart';
-import 'package:todo_app/UI_Prac/Screens/Settings.dart';
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  int _select = 0;
-  final List<Widget> _pages = [const Home(), const Records(), const Setting()];
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
+    return Container(
+      width: double.infinity,
+      color: Colors.black,
+      child: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 35),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_back, color: Colors.white, size: 30),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            "Admin Dashboard",
+            style: TextStyle(
+              fontSize: 40,
+              color: Colors.yellow,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          Text(
+            "Manage patients and appointments",
+            style: TextStyle(color: Colors.white, fontSize: 15),
+          ),
+          const SizedBox(height: 20),
+          Image.asset("lib/assets/doctor.png", height: 180),
+          const SizedBox(height: 30),
+          _buildButton(Icons.person_add_alt_1, "Add New Patient"),
+          const SizedBox(height: 20),
+          _buildButton(Icons.person_remove, "Remove Patient"),
+          const SizedBox(height: 20),
+          _buildButton(Icons.event_note, "Manage Appointments"),
+          const SizedBox(height: 20),
+          _buildButton(Icons.list_alt, "View Patients List"),
+        ],
+      ),
+    );
+  }
 
-        color: Colors.black,
-        child: Column(
+  Widget _buildButton(IconData icon, String text) {
+    return SizedBox(
+      width: 320,
+      height: 65,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 5,
+          shadowColor: Colors.yellowAccent,
+          backgroundColor: const Color.fromARGB(210, 241, 244, 160),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        onPressed: () {},
+        child: Row(
           children: [
-            Container(
-              // height: 100,
-              width: double.infinity,
-              margin: EdgeInsets.only(top: 35),
-
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.arrow_back, color: Colors.white, size: 30),
-                    onPressed: () {
-                      Navigator.pop(context); // 👈 goes back to previous screen
-                    },
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Container(
-              height: 300,
-              width: double.infinity,
-              // color: Colors.red,
-              child: Column(
-                children: [
-                  Text(
-                    "Admin Dashboard",
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.yellow,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-
-                  Text(
-                    "Manage patients and appointments",
-                    style: TextStyle(color: Colors.white, fontSize: 15),
-                  ),
-                  SizedBox(height: 20),
-                  Image.asset("lib/assets/doctor.png", height: 180),
-                ],
-              ),
-            ),
-
-            SizedBox(
-              width: 320,
-              height: 65,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  elevation: 5,
-                  shadowColor: Colors.yellowAccent,
-                  backgroundColor: const Color.fromARGB(210, 241, 244, 160),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(10),
-                  ),
-                ),
-
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    Icon(Icons.person_add_alt_1, color: Colors.black, size: 33),
-                    SizedBox(width: 25),
-                    Text(
-                      "Add New Patient",
-                      style: TextStyle(
-                        fontSize: 21,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            SizedBox(
-              width: 320,
-              height: 65,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  elevation: 5,
-                  shadowColor: Colors.yellowAccent,
-                  backgroundColor: const Color.fromARGB(210, 241, 244, 160),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(10),
-                  ),
-                ),
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    Icon(Icons.person_remove, size: 33, color: Colors.black),
-                    SizedBox(width: 25),
-                    Text(
-                      "Remove Patient",
-                      style: TextStyle(
-                        fontSize: 21,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            SizedBox(
-              width: 320,
-              height: 65,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  elevation: 5,
-                  shadowColor: Colors.yellowAccent,
-                  backgroundColor: const Color.fromARGB(210, 241, 244, 160),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(10),
-                  ),
-                ),
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    Icon(Icons.event_note, color: Colors.black, size: 30),
-                    SizedBox(width: 25),
-                    Text(
-                      "Manage Appointments",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 21,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            SizedBox(
-              width: 320,
-              height: 65,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  elevation: 5,
-                  shadowColor: Colors.yellowAccent,
-                  backgroundColor: const Color.fromARGB(210, 241, 244, 160),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(10),
-                  ),
-                ),
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    Icon(Icons.list_alt, color: Colors.black, size: 30),
-                    SizedBox(width: 25),
-                    Text(
-                      "View Patients List",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 21,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
+            Icon(icon, color: Colors.black, size: 30),
+            const SizedBox(width: 25),
+            Text(
+              text,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 21,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _select,
-        onTap: (index) {
-          setState(() {});
-        },
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Color.fromARGB(255, 179, 165, 43),
-        backgroundColor: const Color.fromARGB(255, 66, 52, 52),
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Records",
-            backgroundColor: Colors.black,
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setting"),
-        ],
       ),
     );
   }
