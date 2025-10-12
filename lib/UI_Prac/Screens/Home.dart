@@ -9,6 +9,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _select = 0;
+  final List<Widget> _pages = [
+    Center(child: Text("Home Screen",style: TextStyle(fontSize: 30),),)
+  ]
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -194,7 +198,7 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person, color: Color.fromARGB(255, 179, 165, 43)),
-            label: "Records",
+            label: "Records",backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
             icon: Icon(
