@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/UI_Prac/Screens/Login.dart';
+import 'package:todo_app/UI_Prac/Screens/Records.dart';
+import 'package:todo_app/UI_Prac/Screens/Settings.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,9 +12,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _select = 0;
-  final List<Widget> _pages = [
-    Center(child: Text("Home Screen",style: TextStyle(fontSize: 30),),)
-  ]
+  final List<Widget> _pages = [const Home(), const Records(), const Setting()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -190,23 +190,21 @@ class _HomeState extends State<Home> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _select,
+        onTap: (index) {
+          setState(() {});
+        },
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Color.fromARGB(255, 179, 165, 43),
         backgroundColor: const Color.fromARGB(255, 66, 52, 52),
         items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Color.fromARGB(255, 179, 165, 43)),
-            label: "Home",
+            icon: Icon(Icons.person),
+            label: "Records",
+            backgroundColor: Colors.black,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Color.fromARGB(255, 179, 165, 43)),
-            label: "Records",backgroundColor: Colors.black,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-              color: Color.fromARGB(255, 179, 165, 43),
-            ),
-            label: "Setting",
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setting"),
         ],
       ),
     );
