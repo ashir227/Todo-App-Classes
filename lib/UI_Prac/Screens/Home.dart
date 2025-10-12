@@ -185,13 +185,26 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   backgroundColor: const Color.fromARGB(255, 66, 52, 52),
-      //   items: const [
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-      //     BottomNavigationBarItem(icon: Icon(Icons.person), label: "Records"),
-      //   ],
-      // ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color.fromARGB(255, 66, 52, 52),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, color: Color.fromARGB(255, 179, 165, 43)),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person, color: Color.fromARGB(255, 179, 165, 43)),
+            label: "Records",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.settings,
+              color: Color.fromARGB(255, 179, 165, 43),
+            ),
+            label: "Setting",
+          ),
+        ],
+      ),
     );
   }
 }
