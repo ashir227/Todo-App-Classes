@@ -18,43 +18,22 @@ class _AddScrState extends State<AddScr> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                color: Colors.red,
-                child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      color: const Color.fromARGB(255, 9, 131, 55),
-                      height: 100,
-                      width: 50,
-                      margin: EdgeInsets.only(top: 30),
-                      child: Column(
-                        children: [
-                          IconButton(
-                            icon: Icon(
-                              Icons.arrow_back,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 20),
-                    Center(
-                      child: Image.asset(
-                        "lib/assets/logo.png",
-                        height: 200,
-                        width: 220,
-                      ),
-                    ),
-                  ],
-                ),
+            Container(
+              // color: Colors.red,
+              height: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.arrow_back, color: Colors.white, size: 30),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+
+                  Image.asset("lib/assets/logo.png", height: 200, width: 220),
+                  SizedBox(width: 10),
+                ],
               ),
             ),
 
