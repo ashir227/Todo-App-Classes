@@ -81,7 +81,16 @@ class _AddScrState extends State<AddScr> {
             ),
             SizedBox(height: 70),
             Column(
-              children: [TextField(style: TextStyle(color: Colors.yellow))],
+              children: [
+                TextField(
+                  // focusNode: namefocus,
+                  style: TextStyle(color: Colors.yellow),
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(borderSide: ))
+                  ),
+                  
+                ),
+              ],
             ),
           ],
         ),
