@@ -40,6 +40,7 @@ class _AddScrState extends State<AddScr> {
             ),
 
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text.rich(
                   TextSpan(
@@ -72,8 +73,15 @@ class _AddScrState extends State<AddScr> {
                     ],
                   ),
                 ),
-                Text("Enter"),
+                Text(
+                  "Enter patient details",
+                  style: TextStyle(color: Colors.white, fontSize: 18.5),
+                ),
               ],
+            ),
+            SizedBox(height: 70),
+            Column(
+              children: [TextField(style: TextStyle(color: Colors.yellow))],
             ),
           ],
         ),
