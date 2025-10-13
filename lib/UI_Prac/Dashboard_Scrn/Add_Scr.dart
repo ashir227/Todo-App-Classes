@@ -8,6 +8,8 @@ class AddScr extends StatefulWidget {
 }
 
 class _AddScrState extends State<AddScr> {
+  FocusNode _namenode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,19 +82,28 @@ class _AddScrState extends State<AddScr> {
               ],
             ),
             SizedBox(height: 70),
-            Column(
-              children: [
-                TextField(
-                  // focusNode: namefocus,
-                  style: TextStyle(color: Colors.yellow),
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(borderSide: ))
-                  ),
-                  
-                ),
-              ],
-            ),
+            Column(children: [newMethod(), newMethod(), newMethod()]),
           ],
+        ),
+      ),
+    );
+  }
+
+  TextField newMethod() {
+    return TextField(
+      focusNode: _namenode,
+      style: TextStyle(color: Colors.yellow),
+      decoration: InputDecoration(
+        labelText: "Patient Name",
+        labelStyle: TextStyle(color: Colors.yellow),
+        prefixIcon: Icon(Icons.person_2_outlined, color: Colors.yellow),
+        prefixStyle: TextStyle(color: Colors.yellow),
+
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.yellow, width: 2),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black, width: 2),
         ),
       ),
     );
