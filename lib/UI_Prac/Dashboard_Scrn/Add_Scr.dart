@@ -8,6 +8,8 @@ class AddScr extends StatefulWidget {
 }
 
 class _AddScrState extends State<AddScr> {
+  TextEditingController add = TextEditingController();
+  List Addme = [];
   FocusNode _namenode = FocusNode();
 
   @override
@@ -82,21 +84,62 @@ class _AddScrState extends State<AddScr> {
               ],
             ),
             SizedBox(height: 70),
-            Column(children: [newMethod(), newMethod(), newMethod()]),
+            Column(
+              children: [
+                newMethod(Icons.person_2_outlined, "Patient Name"),
+                SizedBox(height: 20),
+                newMethod(Icons.calendar_month_outlined, "Date of Birth"),
+                SizedBox(height: 20),
+                newMethod(Icons.male_outlined, "Gender"),
+                SizedBox(height: 20),
+                newMethod(Icons.phone, "Contact Number"),
+                SizedBox(height: 20),
+                newMethod(Icons.message_outlined, "Disease / Remarks"),
+              ],
+            ),
+            SizedBox(height: 50),
+            Center(
+              child: Container(
+                width: 400,
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(10),
+                    ),
+                    backgroundColor: const Color.fromARGB(210, 227, 230, 150),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      Addme.add(add.text);
+                    });
+                  },
+                  child: Text(
+                    "Save Patient",
+                    style: TextStyle(fontSize: 22, color: Colors.black),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  TextField newMethod() {
+  TextField newMethod(IconData icon, String text1) {
     return TextField(
+      cursorColor: Colors.yellow,
+
+      cursorHeight: 20,
+      showCursor: true,
+      controller: add,
       focusNode: _namenode,
       style: TextStyle(color: Colors.yellow),
       decoration: InputDecoration(
-        labelText: "Patient Name",
+        labelText: text1,
         labelStyle: TextStyle(color: Colors.yellow),
-        prefixIcon: Icon(Icons.person_2_outlined, color: Colors.yellow),
+        prefixIcon: Icon(icon, color: Colors.yellow),
         prefixStyle: TextStyle(color: Colors.yellow),
 
         enabledBorder: OutlineInputBorder(
