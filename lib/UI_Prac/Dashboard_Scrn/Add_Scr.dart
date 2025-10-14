@@ -11,6 +11,10 @@ class _AddScrState extends State<AddScr> {
   TextEditingController add = TextEditingController();
   List Addme = [];
   FocusNode _namenode = FocusNode();
+  final FocusNode _dobNode = FocusNode();
+  final FocusNode _genderNode = FocusNode();
+  final FocusNode _contactNode = FocusNode();
+  final FocusNode _diseaseNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -86,15 +90,23 @@ class _AddScrState extends State<AddScr> {
             SizedBox(height: 70),
             Column(
               children: [
-                newMethod(Icons.person_2_outlined, "Patient Name"),
+                newMethod(Icons.person_2_outlined, "Patient Name", _namenode),
                 SizedBox(height: 20),
-                newMethod(Icons.calendar_month_outlined, "Date of Birth"),
+                newMethod(
+                  Icons.calendar_month_outlined,
+                  "Date of Birth",
+                  _dobNode,
+                ),
                 SizedBox(height: 20),
-                newMethod(Icons.male_outlined, "Gender"),
+                newMethod(Icons.male_outlined, "Gender", _genderNode),
                 SizedBox(height: 20),
-                newMethod(Icons.phone, "Contact Number"),
+                newMethod(Icons.phone, "Contact Number", _contactNode),
                 SizedBox(height: 20),
-                newMethod(Icons.message_outlined, "Disease / Remarks"),
+                newMethod(
+                  Icons.message_outlined,
+                  "Disease / Remarks",
+                  _diseaseNode,
+                ),
               ],
             ),
             SizedBox(height: 50),
@@ -127,14 +139,14 @@ class _AddScrState extends State<AddScr> {
     );
   }
 
-  TextField newMethod(IconData icon, String text1) {
+  TextField newMethod(IconData icon, String text1, FocusNode focusNode) {
     return TextField(
       cursorColor: Colors.yellow,
 
       cursorHeight: 20,
       showCursor: true,
       controller: add,
-      focusNode: _namenode,
+      focusNode: focusNode,
       style: TextStyle(color: Colors.yellow),
       decoration: InputDecoration(
         labelText: text1,
