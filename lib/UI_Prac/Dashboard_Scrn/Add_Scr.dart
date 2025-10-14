@@ -171,7 +171,7 @@ class _AddScrState extends State<AddScr> {
       cursorColor: Colors.yellow,
 
       cursorHeight: 20,
-      showCursor: true,
+
       controller: controller,
       focusNode: focusNode,
       style: TextStyle(color: Colors.yellow),
