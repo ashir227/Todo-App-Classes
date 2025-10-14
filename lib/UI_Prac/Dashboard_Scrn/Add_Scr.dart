@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class AddScr extends StatefulWidget {
@@ -8,7 +10,12 @@ class AddScr extends StatefulWidget {
 }
 
 class _AddScrState extends State<AddScr> {
-  TextEditingController add = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController dobController = TextEditingController();
+  final TextEditingController genderController = TextEditingController();
+  final TextEditingController contactController = TextEditingController();
+  final TextEditingController diseaseController = TextEditingController();
+
   List Addme = [];
   FocusNode _namenode = FocusNode();
   final FocusNode _dobNode = FocusNode();
@@ -90,22 +97,39 @@ class _AddScrState extends State<AddScr> {
             SizedBox(height: 70),
             Column(
               children: [
-                newMethod(Icons.person_2_outlined, "Patient Name", _namenode),
+                newMethod(
+                  Icons.person_2_outlined,
+                  "Patient Name",
+                  _namenode,
+                  nameController,
+                ),
                 SizedBox(height: 20),
                 newMethod(
                   Icons.calendar_month_outlined,
                   "Date of Birth",
                   _dobNode,
+                  dobController,
                 ),
                 SizedBox(height: 20),
-                newMethod(Icons.male_outlined, "Gender", _genderNode),
+                newMethod(
+                  Icons.male_outlined,
+                  "Gender",
+                  _genderNode,
+                  genderController,
+                ),
                 SizedBox(height: 20),
-                newMethod(Icons.phone, "Contact Number", _contactNode),
+                newMethod(
+                  Icons.phone,
+                  "Contact Number",
+                  _contactNode,
+                  contactController,
+                ),
                 SizedBox(height: 20),
                 newMethod(
                   Icons.message_outlined,
                   "Disease / Remarks",
                   _diseaseNode,
+                  diseaseController,
                 ),
               ],
             ),
@@ -122,9 +146,7 @@ class _AddScrState extends State<AddScr> {
                     backgroundColor: const Color.fromARGB(210, 227, 230, 150),
                   ),
                   onPressed: () {
-                    setState(() {
-                      Addme.add(add.text);
-                    });
+                    setState(() {});
                   },
                   child: Text(
                     "Save Patient",
@@ -139,13 +161,18 @@ class _AddScrState extends State<AddScr> {
     );
   }
 
-  TextField newMethod(IconData icon, String text1, FocusNode focusNode) {
+  TextField newMethod(
+    IconData icon,
+    String text1,
+    FocusNode focusNode,
+    TextEditingController controller,
+  ) {
     return TextField(
       cursorColor: Colors.yellow,
 
       cursorHeight: 20,
       showCursor: true,
-      controller: add,
+      controller: controller,
       focusNode: focusNode,
       style: TextStyle(color: Colors.yellow),
       decoration: InputDecoration(
