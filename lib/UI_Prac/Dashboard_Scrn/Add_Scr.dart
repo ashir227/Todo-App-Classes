@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:todo_app/model/Pat_class.dart';
 
 class AddScr extends StatefulWidget {
   const AddScr({super.key});
@@ -16,7 +17,7 @@ class _AddScrState extends State<AddScr> {
   final TextEditingController contactController = TextEditingController();
   final TextEditingController diseaseController = TextEditingController();
 
-  List Addme = [];
+  List Add_patient = [];
   FocusNode _namenode = FocusNode();
   final FocusNode _dobNode = FocusNode();
   final FocusNode _genderNode = FocusNode();
@@ -163,7 +164,13 @@ class _AddScrState extends State<AddScr> {
                         ),
                       ),
                       onPressed: () {
-                        setState(() {});
+                        final newpat = Patient(
+                          name: nameController.text,
+                          dob: int.parse(dobController.text),
+                          gender: genderController.text,
+                          num: int.parse(contactController.text),
+                          disease: diseaseController.text,
+                        );
                       },
                       child: Text(
                         "Save Patient",
