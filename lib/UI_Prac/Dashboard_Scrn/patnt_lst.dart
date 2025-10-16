@@ -10,6 +10,6 @@ class pat_list extends StatefulWidget {
 class _pat_listState extends State<pat_list> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold();
   }
 }
