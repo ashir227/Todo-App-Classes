@@ -4,9 +4,14 @@ import 'package:todo_app/UI_Prac/Dashboard_Scrn/mng_apt.dart';
 import 'package:todo_app/UI_Prac/Dashboard_Scrn/patnt_lst.dart';
 import 'package:todo_app/UI_Prac/Dashboard_Scrn/remv_Scr.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
