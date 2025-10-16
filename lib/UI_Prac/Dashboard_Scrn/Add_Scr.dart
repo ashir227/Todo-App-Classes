@@ -165,40 +165,60 @@ class _AddScrState extends State<AddScr> {
                         ),
                       ),
                       onPressed: () {
-                        if (nameController.text.isEmpty ||
-                            dobController.text.isEmpty ||
-                            genderController.text.isEmpty ||
-                            contactController.text.isEmpty ||
-                            diseaseController.text.isEmpty) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('Please fill all required fields'),
-                            ),
-                          );
-                          return;
-                        }
-                        final new_pat = Patient(
-                          name: nameController.text,
-                          dob: int.parse(dobController.text),
-                          gender: genderController.text,
-                          num: int.parse(contactController.text),
-                          disease: diseaseController.text,
-                        );
-                        setState(() {
-                          Add_patient.add(new_pat);
-                        });
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              "Patient Sucessfully Added",
-                              style: TextStyle(color: Colors.blue),
-                            ),
-                          ),
-                        );
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => pat_list()),
-                        );
+                        // if (nameController.text.isEmpty ||
+                        //     dobController.text.isEmpty ||
+                        //     genderController.text.isEmpty ||
+                        //     contactController.text.isEmpty ||
+                        //     diseaseController.text.isEmpty) {
+                        //   ScaffoldMessenger.of(context).showSnackBar(
+                        //     SnackBar(
+                        //       content: Text(
+                        //         'Please fill all required fields',
+                        //         style: TextStyle(
+                        //           color: Colors.red,
+                        //           fontSize: 16.5,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   );
+                        //   return;
+                        // }
+                        // final new_pat = Patient(
+                        //   name: nameController.text,
+                        //   dob: double.parse(dobController.text),
+                        //   gender: genderController.text,
+                        //   num: int.parse(contactController.text),
+                        //   disease: diseaseController.text,
+                        // );
+                        // setState(() {
+                        //   Add_patient.add(new_pat);
+                        // });
+
+                        // ScaffoldMessenger.of(context).showSnackBar(
+                        //   SnackBar(
+                        //     content: Text(
+                        //       "Patient Sucessfully Added",
+                        //       style: TextStyle(
+                        //         color: Colors.blue,
+                        //         fontSize: 16.5,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // );
+
+                        // nameController.clear();
+                        // dobController.clear();
+                        // genderController.clear();
+                        // contactController.clear();
+                        // diseaseController.clear();
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => pat_list()),
+                        // );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => pat_list()),
+                        // );
                       },
                       child: Text(
                         "Save Patient",
