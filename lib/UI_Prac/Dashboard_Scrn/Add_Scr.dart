@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:todo_app/UI_Prac/Dashboard_Scrn/patnt_lst.dart';
 import 'package:todo_app/model/Pat_class.dart';
 
 class AddScr extends StatefulWidget {
@@ -164,12 +165,39 @@ class _AddScrState extends State<AddScr> {
                         ),
                       ),
                       onPressed: () {
-                        final newpat = Patient(
+                        if (nameController.text.isEmpty ||
+                            dobController.text.isEmpty ||
+                            genderController.text.isEmpty ||
+                            contactController.text.isEmpty ||
+                            diseaseController.text.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Please fill all required fields'),
+                            ),
+                          );
+                          return;
+                        }
+                        final new_pat = Patient(
                           name: nameController.text,
                           dob: int.parse(dobController.text),
                           gender: genderController.text,
                           num: int.parse(contactController.text),
                           disease: diseaseController.text,
+                        );
+                        setState(() {
+                          Add_patient.add(new_pat);
+                        });
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              "Patient Sucessfully Added",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => pat_list()),
                         );
                       },
                       child: Text(
