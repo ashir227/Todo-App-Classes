@@ -72,7 +72,9 @@ class DashboardScreen extends StatelessWidget {
           _buildButton(Icons.list_alt, "View Patients List", () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const pat_list()),
+              MaterialPageRoute(
+                builder: (context) => const PatientListScreen(Add_patient: []),
+              ),
             );
           }),
         ],
