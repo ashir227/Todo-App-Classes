@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:todo_app/model/patient_data.dart';
 
 import 'package:flutter/material.dart';
 import 'package:todo_app/UI_Prac/Dashboard_Scrn/patnt_lst.dart';
@@ -18,7 +19,7 @@ class _AddScrState extends State<AddScr> {
   final TextEditingController contactController = TextEditingController();
   final TextEditingController diseaseController = TextEditingController();
 
-  static List<Patient> Add_patient = [];
+  static List<Patient> allPatients = [];
   FocusNode _namenode = FocusNode();
   final FocusNode _dobNode = FocusNode();
   final FocusNode _genderNode = FocusNode();
@@ -217,7 +218,7 @@ class _AddScrState extends State<AddScr> {
                               disease: diseaseController.text,
                             );
                             setState(() {
-                              Add_patient.add(new_pat);
+                              allPatients.add(new_pat);
                             });
 
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -259,18 +260,6 @@ class _AddScrState extends State<AddScr> {
                       ),
                     ],
                   ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            PatientListScreen(Add_patient: Add_patient),
-                      ),
-                    );
-                  },
-                  child: Text("d"),
                 ),
               ],
             ),
