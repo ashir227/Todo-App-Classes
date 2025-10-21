@@ -27,7 +27,9 @@ class _SplashscrState extends State<Splashscr> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
-        child: Center(child: Image.asset("lib/assets/logo.png", height: 900)),
+        child: Center(
+          child: Image.asset("lib/assets/logo.png", height: 500, width: 300),
+        ),
       ),
     );
   }
