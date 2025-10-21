@@ -1,6 +1,6 @@
 class Patient {
   String name;
-  double dob;
+  String dob;
   String gender;
   int num;
   String disease;

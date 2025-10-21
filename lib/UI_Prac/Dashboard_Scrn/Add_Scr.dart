@@ -172,12 +172,34 @@ class _AddScrState extends State<AddScr> {
                             diseaseController.text.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text(
-                                'Please fill all required fields',
-                                style: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 16.5,
-                                ),
+                              behavior: SnackBarBehavior.floating,
+                              backgroundColor: Colors.black.withOpacity(0.8),
+                              duration: const Duration(seconds: 2),
+                              content: Row(
+                                children: [
+                                  Icon(
+                                    Icons.check_circle,
+                                    color: const Color.fromARGB(
+                                      255,
+                                      237,
+                                      91,
+                                      46,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Text(
+                                    "Please Add All Rquired Fields",
+                                    style: TextStyle(
+                                      color: const Color.fromARGB(
+                                        255,
+                                        237,
+                                        91,
+                                        46,
+                                      ),
+                                      fontSize: 16.5,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           );
@@ -185,9 +207,9 @@ class _AddScrState extends State<AddScr> {
                         }
                         final new_pat = Patient(
                           name: nameController.text,
-                          dob: double.parse(dobController.text),
+                          dob: dobController.text,
                           gender: genderController.text,
-                          num: int.parse(contactController.text),
+                          num: int.parse(contactController.text) ?? 0,
                           disease: diseaseController.text,
                         );
                         setState(() {
@@ -196,12 +218,24 @@ class _AddScrState extends State<AddScr> {
 
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text(
-                              "Patient Sucessfully Added",
-                              style: TextStyle(
-                                color: const Color.fromARGB(255, 192, 181, 81),
-                                fontSize: 16.5,
-                              ),
+                            behavior: SnackBarBehavior.floating,
+                            backgroundColor: Colors.black.withOpacity(0.8),
+                            duration: const Duration(seconds: 2),
+                            content: Row(
+                              children: [
+                                Icon(
+                                  Icons.check_circle,
+                                  color: Colors.yellowAccent,
+                                ),
+                                const SizedBox(width: 10),
+                                Text(
+                                  "Patient Successfully Added!",
+                                  style: TextStyle(
+                                    color: Colors.yellowAccent,
+                                    fontSize: 16.5,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         );
@@ -211,13 +245,13 @@ class _AddScrState extends State<AddScr> {
                         genderController.clear();
                         contactController.clear();
                         diseaseController.clear();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                PatientListScreen(Add_patient: Add_patient),
-                          ),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) =>
+                        //         PatientListScreen(Add_patient: Add_patient),
+                        //   ),
+                        // );
                       },
                       child: Text(
                         "Save Patient",
