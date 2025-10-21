@@ -19,7 +19,7 @@ class _AddScrState extends State<AddScr> {
   final TextEditingController contactController = TextEditingController();
   final TextEditingController diseaseController = TextEditingController();
 
-  static List<Patient> allPatients = [];
+  // static List<Patient> allPatients = [];
   FocusNode _namenode = FocusNode();
   final FocusNode _dobNode = FocusNode();
   final FocusNode _genderNode = FocusNode();
