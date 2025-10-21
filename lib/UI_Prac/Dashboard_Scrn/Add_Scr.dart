@@ -18,7 +18,7 @@ class _AddScrState extends State<AddScr> {
   final TextEditingController contactController = TextEditingController();
   final TextEditingController diseaseController = TextEditingController();
 
-  // List<Patient> Add_patient = [];
+  List<Patient> Add_patient = [];
   FocusNode _namenode = FocusNode();
   final FocusNode _dobNode = FocusNode();
   final FocusNode _genderNode = FocusNode();
@@ -155,7 +155,7 @@ class _AddScrState extends State<AddScr> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadiusGeometry.circular(10),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         backgroundColor: const Color.fromARGB(
                           210,
@@ -211,11 +211,13 @@ class _AddScrState extends State<AddScr> {
                         genderController.clear();
                         contactController.clear();
                         diseaseController.clear();
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => pat_list()),
-                        // );
-                        //
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                PatientListScreen(Add_patient: Add_patient),
+                          ),
+                        );
                       },
                       child: Text(
                         "Save Patient",

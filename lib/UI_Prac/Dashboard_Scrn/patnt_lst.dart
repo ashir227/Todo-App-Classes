@@ -13,7 +13,7 @@ class PatientListScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final p = Add_patient[index];
           return Card(
-            color: Colors.yellow.withOpacity(0.2),
+            color: Colors.black.withOpacity(0.2),
             child: ListTile(
               title: Text(p.name, style: TextStyle(color: Colors.white)),
               subtitle: Text(
