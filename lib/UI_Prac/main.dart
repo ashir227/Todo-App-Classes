@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/UI_Prac/Screens/Splash.dart';
 import 'package:todo_app/UI_Prac/Screens/initscr.dart';
 
 void main(List<String> args) {
@@ -10,6 +11,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Screens());
+    return MaterialApp(home: Splashscr());
   }
 }
