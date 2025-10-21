@@ -18,7 +18,7 @@ class _AddScrState extends State<AddScr> {
   final TextEditingController contactController = TextEditingController();
   final TextEditingController diseaseController = TextEditingController();
 
-  List<Patient> Add_patient = [];
+  static List<Patient> Add_patient = [];
   FocusNode _namenode = FocusNode();
   final FocusNode _dobNode = FocusNode();
   final FocusNode _genderNode = FocusNode();
@@ -149,116 +149,128 @@ class _AddScrState extends State<AddScr> {
                 ),
                 SizedBox(height: 50),
                 Center(
-                  child: Container(
-                    width: 400,
-                    height: 50,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        backgroundColor: const Color.fromARGB(
-                          210,
-                          227,
-                          230,
-                          150,
-                        ),
-                      ),
-                      onPressed: () {
-                        if (nameController.text.isEmpty ||
-                            dobController.text.isEmpty ||
-                            genderController.text.isEmpty ||
-                            contactController.text.isEmpty ||
-                            diseaseController.text.isEmpty) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              behavior: SnackBarBehavior.floating,
-                              backgroundColor: Colors.black.withOpacity(0.8),
-                              duration: const Duration(seconds: 2),
-                              content: Row(
-                                children: [
-                                  Icon(
-                                    Icons.check_circle,
-                                    color: const Color.fromARGB(
-                                      255,
-                                      237,
-                                      91,
-                                      46,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    "Please Add All Rquired Fields",
-                                    style: TextStyle(
-                                      color: const Color.fromARGB(
-                                        255,
-                                        237,
-                                        91,
-                                        46,
-                                      ),
-                                      fontSize: 16.5,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 400,
+                        height: 50,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                          );
-                          return;
-                        }
-                        final new_pat = Patient(
-                          name: nameController.text,
-                          dob: dobController.text,
-                          gender: genderController.text,
-                          num: int.parse(contactController.text) ?? 0,
-                          disease: diseaseController.text,
-                        );
-                        setState(() {
-                          Add_patient.add(new_pat);
-                        });
-
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            behavior: SnackBarBehavior.floating,
-                            backgroundColor: Colors.black.withOpacity(0.8),
-                            duration: const Duration(seconds: 2),
-                            content: Row(
-                              children: [
-                                Icon(
-                                  Icons.check_circle,
-                                  color: Colors.yellowAccent,
-                                ),
-                                const SizedBox(width: 10),
-                                Text(
-                                  "Patient Successfully Added!",
-                                  style: TextStyle(
-                                    color: Colors.yellowAccent,
-                                    fontSize: 16.5,
-                                  ),
-                                ),
-                              ],
+                            backgroundColor: const Color.fromARGB(
+                              210,
+                              227,
+                              230,
+                              150,
                             ),
                           ),
-                        );
+                          onPressed: () {
+                            if (nameController.text.isEmpty ||
+                                dobController.text.isEmpty ||
+                                genderController.text.isEmpty ||
+                                contactController.text.isEmpty ||
+                                diseaseController.text.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  behavior: SnackBarBehavior.floating,
+                                  backgroundColor: Colors.black.withOpacity(
+                                    0.8,
+                                  ),
+                                  duration: const Duration(seconds: 2),
+                                  content: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.check_circle,
+                                        color: const Color.fromARGB(
+                                          255,
+                                          237,
+                                          91,
+                                          46,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Text(
+                                        "Please Add All Rquired Fields",
+                                        style: TextStyle(
+                                          color: const Color.fromARGB(
+                                            255,
+                                            237,
+                                            91,
+                                            46,
+                                          ),
+                                          fontSize: 16.5,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                              return;
+                            }
+                            final new_pat = Patient(
+                              name: nameController.text,
+                              dob: dobController.text,
+                              gender: genderController.text,
+                              num: int.tryParse(contactController.text) ?? 0,
+                              disease: diseaseController.text,
+                            );
+                            setState(() {
+                              Add_patient.add(new_pat);
+                            });
 
-                        nameController.clear();
-                        dobController.clear();
-                        genderController.clear();
-                        contactController.clear();
-                        diseaseController.clear();
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) =>
-                        //         PatientListScreen(Add_patient: Add_patient),
-                        //   ),
-                        // );
-                      },
-                      child: Text(
-                        "Save Patient",
-                        style: TextStyle(fontSize: 22, color: Colors.black),
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                behavior: SnackBarBehavior.floating,
+                                backgroundColor: Colors.black.withOpacity(0.8),
+                                duration: const Duration(seconds: 2),
+                                content: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.check_circle,
+                                      color: Colors.yellowAccent,
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      "Patient Successfully Added!",
+                                      style: TextStyle(
+                                        color: Colors.yellowAccent,
+                                        fontSize: 16.5,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+
+                            nameController.clear();
+                            dobController.clear();
+                            genderController.clear();
+                            contactController.clear();
+                            diseaseController.clear();
+                          },
+
+                          child: Text(
+                            "Save Patient",
+                            style: TextStyle(fontSize: 22, color: Colors.black),
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            PatientListScreen(Add_patient: Add_patient),
+                      ),
+                    );
+                  },
+                  child: Text("d"),
                 ),
               ],
             ),
