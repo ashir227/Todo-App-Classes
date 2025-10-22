@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/UI_Prac/Dashboard_Scrn/Add_Scr.dart';
-import 'package:todo_app/UI_Prac/Dashboard_Scrn/mng_apt.dart';
-import 'package:todo_app/UI_Prac/Dashboard_Scrn/patnt_lst.dart';
-import 'package:todo_app/UI_Prac/Dashboard_Scrn/remv_Scr.dart';
+import 'package:todo_app/TodoApp/Dashboard_Scrn/Add_Scr.dart';
+import 'package:todo_app/TodoApp/Dashboard_Scrn/mng_apt.dart';
+import 'package:todo_app/TodoApp/Dashboard_Scrn/patnt_lst.dart';
+import 'package:todo_app/TodoApp/Dashboard_Scrn/remv_Scr.dart';
+
 import 'package:todo_app/model/patient_data.dart';
+// import 'package:todo_app/TodoApp/Dashboard_Scrn/mng_apt.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
