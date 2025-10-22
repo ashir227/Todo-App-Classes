@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:todo_app/model/patient_data.dart';
 
 import 'package:flutter/material.dart';
-import 'package:todo_app/UI_Prac/Dashboard_Scrn/patnt_lst.dart';
+import 'package:todo_app/TodoApp/Dashboard_Scrn/patnt_lst.dart';
 import 'package:todo_app/model/Pat_class.dart';
 
 class AddScr extends StatefulWidget {

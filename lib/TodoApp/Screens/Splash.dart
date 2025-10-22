@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:todo_app/UI_Prac/Screens/initscr.dart';
+import 'package:todo_app/TodoApp/Screens/initscr.dart';
 
 class Splashscr extends StatefulWidget {
   const Splashscr({super.key});

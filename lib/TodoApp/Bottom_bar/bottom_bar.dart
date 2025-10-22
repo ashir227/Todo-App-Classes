@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/UI_Prac/Screens/DashboardScreen.dart';
+import 'package:todo_app/TodoApp/Screens/DashboardScreen.dart';
 
-import 'package:todo_app/UI_Prac/Screens/Records.dart';
-import 'package:todo_app/UI_Prac/Screens/Settings.dart';
+import 'package:todo_app/TodoApp/Screens/Records.dart';
+import 'package:todo_app/TodoApp/Screens/Settings.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
