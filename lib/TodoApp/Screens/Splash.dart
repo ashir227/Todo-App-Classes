@@ -1,6 +1,8 @@
 import 'dart:async';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/TodoApp/Screens/DashboardScreen.dart';
+import 'package:todo_app/TodoApp/Screens/Login.dart';
 import 'package:todo_app/TodoApp/Screens/initscr.dart';
 
 class Splashscr extends StatefulWidget {
@@ -11,15 +13,11 @@ class Splashscr extends StatefulWidget {
 }
 
 class _SplashscrState extends State<Splashscr> {
+  static const String KEYLOGIN = "login";
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => Screens()),
-      );
-    });
+    shared();
   }
 
   @override
@@ -32,5 +30,30 @@ class _SplashscrState extends State<Splashscr> {
         ),
       ),
     );
+  }
+
+  void shared() async {
+    var shredpr = await SharedPreferences.getInstance();
+    var islogedin = shredpr.getBool(KEYLOGIN);
+    Timer(Duration(seconds: 5), () {
+      if (islogedin != null) {
+        if (islogedin) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => DashboardScreen()),
+          );
+        } else {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => Loginscr()),
+          );
+        }
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Loginscr()),
+        );
+      }
+    });
   }
 }
