@@ -8,14 +8,14 @@ class PatientListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.black,
       body: ListView.builder(
         itemCount: allPatients.length,
         itemBuilder: (context, index) {
           final p = allPatients[index];
           return Card(
             borderOnForeground: true,
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.yellowAccent.withOpacity(0.4),
             child: ListTile(
               title: Text(p.name, style: TextStyle(color: Colors.white)),
               subtitle: Text(

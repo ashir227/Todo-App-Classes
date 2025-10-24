@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/TodoApp/Bottom_bar/bottom_bar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todo_app/TodoApp/Screens/Splash.dart';
 
 class Loginscr extends StatefulWidget {
   const Loginscr({super.key});
@@ -132,9 +134,13 @@ class _LoginscrState extends State<Loginscr> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           if (emailcon.text == Correctemail &&
                               passwordcon.text == CorrectPass) {
+                            //IF Sucessfully loggedin
+                            var shared = await SharedPreferences.getInstance();
+                            await shared.setBool(SplashscrState.KEYLOGIN, true);
+
                             Navigator.push(
                               context,
                               MaterialPageRoute(

@@ -9,10 +9,10 @@ class Splashscr extends StatefulWidget {
   const Splashscr({super.key});
 
   @override
-  State<Splashscr> createState() => _SplashscrState();
+  State<Splashscr> createState() => SplashscrState();
 }
 
-class _SplashscrState extends State<Splashscr> {
+class SplashscrState extends State<Splashscr> {
   static const String KEYLOGIN = "login";
   @override
   void initState() {
@@ -35,7 +35,7 @@ class _SplashscrState extends State<Splashscr> {
   void shared() async {
     var shredpr = await SharedPreferences.getInstance();
     var islogedin = shredpr.getBool(KEYLOGIN);
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 2), () {
       if (islogedin != null) {
         if (islogedin) {
           Navigator.pushReplacement(
