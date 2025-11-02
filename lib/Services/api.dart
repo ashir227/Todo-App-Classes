@@ -117,11 +117,13 @@ class CrudApi {
     }
   }
 
-  delete() async {
-    try {
-      var url = Uri.parse(baseurl);
-      var res = await http.delete(url);
-      if (res.statusCode == 204) {}
-    } catch (e) {}
-  }
+  // delete() async {
+  //   try {
+  //     var url = Uri.parse(baseurl);
+  //     var res = await http.delete(url);
+  //     if (res.statusCode == 204) {
+
+  //     }
+  //   } catch (e) {}
+  // }
 }
