@@ -220,29 +220,6 @@ class _AddScrState extends State<AddScr> {
                               allPatients.add(new_pat);
                             });
 
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                behavior: SnackBarBehavior.floating,
-                                backgroundColor: Colors.black.withOpacity(0.8),
-                                duration: const Duration(seconds: 2),
-                                content: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.check_circle,
-                                      color: Colors.yellowAccent,
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Text(
-                                      "Patient Successfully Added!",
-                                      style: TextStyle(
-                                        color: Colors.yellowAccent,
-                                        fontSize: 16.5,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
 
                             nameController.clear();
                             dobController.clear();

@@ -117,11 +117,35 @@ class CrudApi {
     }
   }
 
-  delete() async {
+  delete(String id, BuildContext context) async {
     try {
-      var url = Uri.parse(baseurl);
+      var url = Uri.parse('$baseurl/$id');
       var res = await http.delete(url);
-      if (res.statusCode == 204) {}
-    } catch (e) {}
+      if (res.statusCode == 204 || res.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.black.withOpacity(0.8),
+            duration: const Duration(seconds: 2),
+            content: Row(
+              children: [
+                Icon(Icons.check_circle, color: Colors.yellowAccent),
+                const SizedBox(width: 10),
+                Text(
+                  "Patient Successfully Deleted!",
+                  style: TextStyle(color: Colors.yellowAccent, fontSize: 16.5),
+                ),
+              ],
+            ),
+          ),
+        );
+      } else {
+        throw Exception("Patient doesnt delete:${res.statusCode}");
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error occured :$e")));
+    }
   }
 }
