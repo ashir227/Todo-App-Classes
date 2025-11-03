@@ -5,18 +5,20 @@ import 'package:todo_app/model/patient_data.dart';
 import 'package:http/http.dart' as http;
 
 class CrudApi {
+  final String baseurl = "https://6906f7e2b1879c890ed87299.mockapi.io/users";
   get(BuildContext context) async {
     try {
       var url = Uri.parse(baseurl);
       var res = await http.get(url);
 
       if (res.statusCode == 200) {
-        var response = jsonDecode(res.body);
+        return (jsonDecode(res.body));
       } else {
-        "Failed to Fetch :${res.statusCode}";
+        throw Exception("Failed to Fetch :${res.statusCode}");
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$e")));
+      return [];
     }
   }
 
@@ -76,9 +78,10 @@ class CrudApi {
     int contact,
     String gender,
     String disease,
+    String id,
   ) async {
     try {
-      var url = Uri.parse(baseurl);
+      var url = Uri.parse('$baseurl/$id');
       var res = await http.put(
         url,
         headers: {"Content-Type": "application/json"},

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:todo_app/Services/api.dart';
 import 'package:todo_app/model/patient_data.dart';
 
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class _AddScrState extends State<AddScr> {
   final TextEditingController genderController = TextEditingController();
   final TextEditingController contactController = TextEditingController();
   final TextEditingController diseaseController = TextEditingController();
-
+  final CrudApi api = CrudApi();
   FocusNode _namenode = FocusNode();
   final FocusNode _dobNode = FocusNode();
   final FocusNode _genderNode = FocusNode();
@@ -219,7 +220,6 @@ class _AddScrState extends State<AddScr> {
                             setState(() {
                               allPatients.add(new_pat);
                             });
-
 
                             nameController.clear();
                             dobController.clear();

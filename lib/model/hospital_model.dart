@@ -24,6 +24,7 @@ class Hosiptal_Model {
     data['gender'] = this.gender;
     data['num'] = this.num;
     data['disease'] = this.disease;
+    data['id'] = this.id;
     return data;
   }
 }
