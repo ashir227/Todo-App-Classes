@@ -12,4 +12,6 @@ class Patient {
 
     required this.disease,
   });
+
+  static fromJson(e) {}
 }
