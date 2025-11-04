@@ -54,7 +54,7 @@ class _PatientListScreenState extends State<PatientListScreen> {
                   title: Text(
                     pat.name,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.yellow,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
