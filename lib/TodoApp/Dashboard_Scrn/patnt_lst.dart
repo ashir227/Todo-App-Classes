@@ -1,18 +1,38 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:todo_app/Services/api.dart';
 import 'package:todo_app/model/Pat_class.dart';
 import 'package:todo_app/model/patient_data.dart';
 
-class PatientListScreen extends StatelessWidget {
+class PatientListScreen extends StatefulWidget {
   final List<Patient> allPatients;
+
   const PatientListScreen({super.key, required this.allPatients});
+
+  @override
+  State<PatientListScreen> createState() => _PatientListScreenState();
+}
+
+class _PatientListScreenState extends State<PatientListScreen> {
+  //  CrudApi getn = CrudApi();
+  @override
+  void initState() async {
+    // TODO: implement initState
+    super.initState();
+
+    await CrudApi().get(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       body: ListView.builder(
-        itemCount: allPatients.length,
+        itemCount: widget.allPatients.length,
         itemBuilder: (context, index) {
-          final p = allPatients[index];
+          final p = widget.allPatients[index];
           return Card(
             borderOnForeground: true,
             color: Colors.yellowAccent.withOpacity(0.4),

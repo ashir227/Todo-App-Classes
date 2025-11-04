@@ -168,7 +168,7 @@ class _AddScrState extends State<AddScr> {
                               150,
                             ),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
                             onsubmitted:
                             (_) => FocusScope.of(
                               context,
@@ -223,7 +223,7 @@ class _AddScrState extends State<AddScr> {
                               disease: diseaseController.text,
                             );
 
-                            api.post(
+                            await api.post(
                               nameController.text,
                               int.tryParse(dobController.text) ?? 0,
                               genderController.text,
@@ -238,7 +238,7 @@ class _AddScrState extends State<AddScr> {
                             contactController.clear();
                             diseaseController.clear();
                             setState(() {
-                              // allPatients.add(new_pat);
+                              allPatients.add(new_pat);
                             });
                           },
 
