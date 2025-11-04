@@ -26,7 +26,8 @@ class _PatientListScreenState extends State<PatientListScreen> {
   }
 
   _loadPatient() async {
-    await CrudApi().get(context);
+    final data = await CrudApi().get(context);
+    allPatients = data;
   }
 
   @override
