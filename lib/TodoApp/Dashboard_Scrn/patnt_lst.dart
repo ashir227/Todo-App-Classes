@@ -26,28 +26,39 @@ class _PatientListScreenState extends State<PatientListScreen> {
   }
 
   _loadPatient() async {
-    final data = await CrudApi().get(context);
-    allPatients = data;
+    try {
+      final data = await CrudApi().get(context);
+      setState(() {
+        allPatients = data;
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error : $e")));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: ListView.builder(
-        itemCount: widget.allPatients.length,
-        itemBuilder: (context, index) {
-          final p = widget.allPatients[index];
-          return Card(
-            borderOnForeground: true,
-            color: Colors.yellowAccent.withOpacity(0.4),
-            child: ListTile(
-              title: Text(p.name, style: TextStyle(color: Colors.white)),
-              subtitle: Text(
-                "DOB : ${p.dob}\nGender: ${p.gender}\nContact : ${p.num}\nDisease/Remarks : ${p.disease}",
-                style: TextStyle(color: Colors.white70),
-              ),
-            ),
+      body: FutureBuilder(
+        future: get(),
+
+        builder: (context, snapshot) {
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              return Card(
+                borderOnForeground: true,
+                color: Colors.yellowAccent.withOpacity(0.4),
+                child: ListTile(
+                  title: Text(p.name, style: TextStyle(color: Colors.white)),
+                  subtitle: Text(
+                    "DOB : ${p.dob}\nGender: ${p.gender}\nContact : ${p.num}\nDisease/Remarks : ${p.disease}",
+                    style: TextStyle(color: Colors.white70),
+                  ),
+                ),
+              );
+            },
           );
         },
       ),
