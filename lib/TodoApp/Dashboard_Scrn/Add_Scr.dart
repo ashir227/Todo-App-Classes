@@ -130,6 +130,7 @@ class _AddScrState extends State<AddScr> {
                       Icons.male_outlined,
                       "Gender",
                       _genderNode,
+
                       genderController,
                     ),
                     SizedBox(height: 20),
@@ -168,6 +169,10 @@ class _AddScrState extends State<AddScr> {
                             ),
                           ),
                           onPressed: () {
+                            onsubmitted:
+                            (_) => FocusScope.of(
+                              context,
+                            ).requestFocus(_genderNode);
                             if (nameController.text.isEmpty ||
                                 dobController.text.isEmpty ||
                                 genderController.text.isEmpty ||
@@ -217,15 +222,24 @@ class _AddScrState extends State<AddScr> {
                               num: int.tryParse(contactController.text) ?? 0,
                               disease: diseaseController.text,
                             );
-                            setState(() {
-                              allPatients.add(new_pat);
-                            });
+
+                            api.post(
+                              nameController.text,
+                              int.tryParse(dobController.text) ?? 0,
+                              genderController.text,
+                              int.tryParse(contactController.text) ?? 0,
+                              diseaseController.text,
+                              context,
+                            );
 
                             nameController.clear();
                             dobController.clear();
                             genderController.clear();
                             contactController.clear();
                             diseaseController.clear();
+                            setState(() {
+                              // allPatients.add(new_pat);
+                            });
                           },
 
                           child: Text(
