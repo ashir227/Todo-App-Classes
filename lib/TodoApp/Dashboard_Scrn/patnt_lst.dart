@@ -18,10 +18,14 @@ class PatientListScreen extends StatefulWidget {
 class _PatientListScreenState extends State<PatientListScreen> {
   //  CrudApi getn = CrudApi();
   @override
-  void initState() async {
+  void initState() {
     // TODO: implement initState
     super.initState();
 
+    _loadPatient();
+  }
+
+  _loadPatient() async {
     await CrudApi().get(context);
   }
 
