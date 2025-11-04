@@ -9,6 +9,7 @@ class Patient {
     required this.dob,
     required this.gender,
     required this.num,
+
     required this.disease,
   });
 }

@@ -15,6 +15,8 @@ class PatientListScreen extends StatefulWidget {
   State<PatientListScreen> createState() => _PatientListScreenState();
 }
 
+bool isload = true;
+
 class _PatientListScreenState extends State<PatientListScreen> {
   //  CrudApi getn = CrudApi();
   @override
@@ -41,27 +43,29 @@ class _PatientListScreenState extends State<PatientListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        future: get(),
-
-        builder: (context, snapshot) {
-          return ListView.builder(
-            itemBuilder: (context, index) {
-              return Card(
-                borderOnForeground: true,
-                color: Colors.yellowAccent.withOpacity(0.4),
-                child: ListTile(
-                  title: Text(p.name, style: TextStyle(color: Colors.white)),
-                  subtitle: Text(
-                    "DOB : ${p.dob}\nGender: ${p.gender}\nContact : ${p.num}\nDisease/Remarks : ${p.disease}",
-                    style: TextStyle(color: Colors.white70),
+      body: isload
+          ? CircularProgressIndicator()
+          : allPatients.isEmpty
+          ? const Center(child: Text("No Patient found"))
+          : ListView.builder(
+              itemBuilder: (context, index) {
+                final pat = allPatients[index];
+                return ListTile(
+                  title: Text(
+                    pat.name,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              );
-            },
-          );
-        },
-      ),
+                  subtitle: Text(
+                    "${pat.dob}\n${pat.gender}\n${pat.num}\n${pat.disease}",
+                    style: const TextStyle(color: Colors.white70),
+                  ),
+                );
+              },
+            ),
     );
   }
 }
