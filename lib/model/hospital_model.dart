@@ -1,7 +1,7 @@
 class HospitalModel {
   final String? id;
   final String name;
-  final String dob;
+  final int dob;
   final String gender;
   final int num;
   final String disease;

@@ -218,7 +218,7 @@ class _AddScrState extends State<AddScr> {
                             }
                             final new_pat = HospitalModel(
                               name: nameController.text,
-                              dob: dobController.text,
+                              dob: int.tryParse(dobController.text) ?? 0,
                               gender: genderController.text,
                               num: int.tryParse(contactController.text) ?? 0,
                               disease: diseaseController.text,

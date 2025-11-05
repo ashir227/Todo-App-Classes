@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 class CrudApi {
   final String baseurl = "https://6906f7e2b1879c890ed87299.mockapi.io/users";
-  get(BuildContext context) async {
+  Future<List<HospitalModel>> get(BuildContext context) async {
     try {
       var url = Uri.parse(baseurl);
       var res = await http.get(url);

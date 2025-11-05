@@ -20,6 +20,7 @@ class _PatientListScreenState extends State<PatientListScreen> {
   //  CrudApi getn = CrudApi();
   List<HospitalModel> allPatients = [];
   bool isload = true;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -33,8 +34,12 @@ class _PatientListScreenState extends State<PatientListScreen> {
       final data = await CrudApi().get(context);
       setState(() {
         allPatients = data;
+        isload = false;
       });
     } catch (e) {
+      setState(() {
+        isload = false;
+      });
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text("Error : $e")));
@@ -44,26 +49,35 @@ class _PatientListScreenState extends State<PatientListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: isload
-          ? CircularProgressIndicator()
+          ? Center(
+              child: CircularProgressIndicator(backgroundColor: Colors.yellow),
+            )
           : allPatients.isEmpty
           ? const Center(child: Text("No Patient found"))
           : ListView.builder(
               itemCount: allPatients.length,
               itemBuilder: (context, index) {
                 final pat = allPatients[index];
-                return ListTile(
-                  title: Text(
-                    pat.name,
-                    style: TextStyle(
-                      color: Colors.yellow,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                return Card(
+                  color: const Color.fromARGB(255, 169, 163, 75),
+                  child: ListTile(
+                    title: Text(
+                      pat.name,
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 43, 41, 21),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  subtitle: Text(
-                    "${pat.dob}\n${pat.gender}\n${pat.num}\n${pat.disease}",
-                    style: const TextStyle(color: Colors.white70),
+                    subtitle: Text(
+                      " DOB : ${pat.dob}\n Gender : ${pat.gender}\n Phone : ${pat.num}\n Disease : ${pat.disease}",
+                      style: const TextStyle(
+                        color: Color.fromARGB(179, 9, 4, 4),
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
                   ),
                 );
               },
