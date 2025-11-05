@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:todo_app/Services/api.dart';
 import 'package:todo_app/model/Pat_class.dart';
+import 'package:todo_app/model/hospital_model.dart';
 import 'package:todo_app/model/patient_data.dart';
 
 class PatientListScreen extends StatefulWidget {
-  final List<Patient> allPatients;
+  final List<HospitalModel> allPatients;
 
   const PatientListScreen({super.key, required this.allPatients});
 
@@ -15,10 +16,10 @@ class PatientListScreen extends StatefulWidget {
   State<PatientListScreen> createState() => _PatientListScreenState();
 }
 
-bool isload = true;
-
 class _PatientListScreenState extends State<PatientListScreen> {
   //  CrudApi getn = CrudApi();
+  List<HospitalModel> allPatients = [];
+  bool isload = true;
   @override
   void initState() {
     // TODO: implement initState
@@ -48,6 +49,7 @@ class _PatientListScreenState extends State<PatientListScreen> {
           : allPatients.isEmpty
           ? const Center(child: Text("No Patient found"))
           : ListView.builder(
+              itemCount: allPatients.length,
               itemBuilder: (context, index) {
                 final pat = allPatients[index];
                 return ListTile(

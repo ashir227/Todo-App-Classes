@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:todo_app/model/Pat_class.dart';
+import 'package:todo_app/model/hospital_model.dart';
 import 'package:todo_app/model/patient_data.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,7 +15,7 @@ class CrudApi {
 
       if (res.statusCode == 200) {
         final List<dynamic> data = (jsonDecode(res.body));
-        return data.map((e) => Patient.fromJson(e)).toList();
+        return data.map((e) => HospitalModel.fromJson(e)).toList();
       } else {
         throw Exception("Failed to Fetch :${res.statusCode}");
       }

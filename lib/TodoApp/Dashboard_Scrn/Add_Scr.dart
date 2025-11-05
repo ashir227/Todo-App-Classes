@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:todo_app/Services/api.dart';
+import 'package:todo_app/model/hospital_model.dart';
 import 'package:todo_app/model/patient_data.dart';
 
 import 'package:flutter/material.dart';
@@ -215,7 +216,7 @@ class _AddScrState extends State<AddScr> {
                               );
                               return;
                             }
-                            final new_pat = Patient(
+                            final new_pat = HospitalModel(
                               name: nameController.text,
                               dob: dobController.text,
                               gender: genderController.text,

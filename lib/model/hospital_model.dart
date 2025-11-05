@@ -1,30 +1,41 @@
-class Hosiptal_Model {
-  String? name;
-  String? dob;
-  String? gender;
-  String? num;
-  String? disease;
-  String? id;
+class HospitalModel {
+  final String? id;
+  final String name;
+  final String dob;
+  final String gender;
+  final int num;
+  final String disease;
 
-  Hosiptal_Model({this.name, this.dob, this.gender, this.num, this.disease});
+  HospitalModel({
+    this.id,
+    required this.name,
+    required this.dob,
+    required this.gender,
+    required this.num,
+    required this.disease,
+  });
 
-  Hosiptal_Model.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    dob = json['dob'];
-    gender = json['gender'];
-    num = json['num'];
-    disease = json['disease'];
-    id = json['id'];
+  // ✅ From JSON (handles both string/int types safely)
+  factory HospitalModel.fromJson(Map<String, dynamic> json) {
+    return HospitalModel(
+      id: json['id']?.toString(),
+      name: json['name'] ?? '',
+      dob: json['dob'] ?? '',
+      gender: json['gender'] ?? '',
+      num: int.tryParse(json['num'].toString()) ?? 0,
+      disease: json['disease'] ?? '',
+    );
   }
 
+  // ✅ To JSON (for POST / PUT requests)
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['dob'] = this.dob;
-    data['gender'] = this.gender;
-    data['num'] = this.num;
-    data['disease'] = this.disease;
-    data['id'] = this.id;
-    return data;
+    return {
+      'name': name,
+      'dob': dob,
+      'gender': gender,
+      'num': num,
+      'disease': disease,
+      if (id != null) 'id': id,
+    };
   }
 }
