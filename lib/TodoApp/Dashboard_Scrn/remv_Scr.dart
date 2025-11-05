@@ -24,7 +24,8 @@ setState(() {
 });
     } catch (e) {
 setState(() {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: (Text("$e",style: TextStyle(color: Colors.white),))))
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    content: (Text("$e",style: TextStyle(color: Colors.yellow),))));
 });
 
     }
@@ -32,6 +33,12 @@ setState(() {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return  Scaffold(
+body: isload ? Center(child:
+ CircularProgressIndicator(backgroundColor: Colors.yellow,),) :allPatients.isEmpty ?
+ ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("No Patients found",style: TextStyle(color: Colors.yellow),)))
+: 
+
+    );
   }
 }
