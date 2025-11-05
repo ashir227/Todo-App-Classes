@@ -51,14 +51,27 @@ class _PatientListScreenState extends State<PatientListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.black),
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white), // 👈 custom color
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       backgroundColor: Colors.black,
       body: isload
           ? Center(
               child: CircularProgressIndicator(backgroundColor: Colors.yellow),
             )
           : allPatients.isEmpty
-          ? const Center(child: Text("No Patient found"))
+          ? const Center(
+              child: Text(
+                "No Patients",
+                style: TextStyle(color: Colors.yellow),
+              ),
+            )
           : ListView.builder(
               itemCount: allPatients.length,
               itemBuilder: (context, index) {

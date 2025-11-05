@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:todo_app/Services/api.dart';
 import 'package:todo_app/model/hospital_model.dart';
 import 'package:todo_app/model/patient_data.dart';
@@ -18,6 +19,27 @@ class _removescrState extends State<removescr> {
     // TODO: implement initState
     super.initState();
     _loadPatient();
+  }
+
+  Future<void> _deletePatient(String? id) async {
+    if (id == null) return;
+
+    final success = await CrudApi().delete(id, context);
+
+    if (success) {
+      // ✅ Update the list immediately
+      setState(() {
+        allPatients.removeWhere((patient) => patient.id == id);
+      });
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Deleted successfully!")));
+    } else {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Failed to delete")));
+    }
   }
 
   _loadPatient() async {
@@ -41,6 +63,16 @@ class _removescrState extends State<removescr> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white), // 👈 custom color
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      backgroundColor: Colors.black,
       body: isload
           ? Center(
               child: CircularProgressIndicator(backgroundColor: Colors.yellow),
@@ -48,11 +80,18 @@ class _removescrState extends State<removescr> {
           : allPatients.isEmpty
           ? Center(child: Text("No Patient List Found"))
           : ListView.builder(
+              itemCount: allPatients.length,
               itemBuilder: (context, index) {
                 final pat = allPatients[index];
                 return Card(
                   color: const Color.fromARGB(255, 169, 163, 75),
                   child: ListTile(
+                    trailing: IconButton(
+                      onPressed: () {
+                        _deletePatient(pat.id);
+                      },
+                      icon: Icon(Icons.delete),
+                    ),
                     title: Text(
                       pat.name,
                       style: TextStyle(
