@@ -36,9 +36,23 @@ setState(() {
     return  Scaffold(
 body: isload ? Center(child:
  CircularProgressIndicator(backgroundColor: Colors.yellow,),) :allPatients.isEmpty ?
- ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("No Patients found",style: TextStyle(color: Colors.yellow),)))
-: 
-
+ Center(child: Text("No Patient List Found"),) 
+: ListView.builder(
+  itemBuilder: (context,index){
+    final pat = allPatients[index];
+  return Card(
+    color: const Color.fromARGB(255, 169, 163, 75),
+    child:ListTile(
+      title: Text(
+        pat.name,style: TextStyle(
+                        color: const Color.fromARGB(255, 43, 41, 21),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+      ),
+    ) ,
+  )
+}) 
     );
   }
 }
