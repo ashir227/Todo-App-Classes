@@ -51,6 +51,7 @@ class _PatientListScreenState extends State<PatientListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.black),
       backgroundColor: Colors.black,
       body: isload
           ? Center(

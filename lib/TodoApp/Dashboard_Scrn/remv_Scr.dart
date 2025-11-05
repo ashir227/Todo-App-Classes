@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/Services/api.dart';
+import 'package:todo_app/model/hospital_model.dart';
 import 'package:todo_app/model/patient_data.dart';
 
 class removescr extends StatefulWidget {
@@ -10,11 +11,15 @@ class removescr extends StatefulWidget {
 }
 
 class _removescrState extends State<removescr> {
+  List<HospitalModel> allPatients = [];
   bool isload = true;
   @override
   void initState() {
     // TODO: implement initState
+    super.initState();
+    _loadPatient();
   }
+
   _loadPatient() async {
     final data = await CrudApi().get(context);
     try {
@@ -54,6 +59,13 @@ class _removescrState extends State<removescr> {
                         color: const Color.fromARGB(255, 43, 41, 21),
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: Text(
+                      " DOB : ${pat.dob}\n Gender : ${pat.gender}\n Phone : ${pat.num}\n Disease : ${pat.disease}",
+                      style: const TextStyle(
+                        color: Color.fromARGB(179, 9, 4, 4),
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
