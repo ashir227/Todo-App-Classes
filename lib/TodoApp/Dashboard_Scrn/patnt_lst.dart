@@ -68,8 +68,8 @@ class _PatientListScreenState extends State<PatientListScreen> {
           : allPatients.isEmpty
           ? const Center(
               child: Text(
-                "No Patients",
-                style: TextStyle(color: Colors.yellow),
+                "No Patient List Found",
+                style: TextStyle(color: Colors.yellow, fontSize: 20),
               ),
             )
           : ListView.builder(
@@ -80,7 +80,7 @@ class _PatientListScreenState extends State<PatientListScreen> {
                   color: const Color.fromARGB(255, 169, 163, 75),
                   child: ListTile(
                     title: Text(
-                      pat.name,
+                      pat.name ?? "Unknown",
                       style: TextStyle(
                         color: const Color.fromARGB(255, 43, 41, 21),
                         fontSize: 20,

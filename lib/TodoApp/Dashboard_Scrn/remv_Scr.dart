@@ -78,7 +78,12 @@ class _removescrState extends State<removescr> {
               child: CircularProgressIndicator(backgroundColor: Colors.yellow),
             )
           : allPatients.isEmpty
-          ? Center(child: Text("No Patient List Found"))
+          ? Center(
+              child: Text(
+                "No Patient List Found",
+                style: TextStyle(color: Colors.yellow, fontSize: 20),
+              ),
+            )
           : ListView.builder(
               itemCount: allPatients.length,
               itemBuilder: (context, index) {
@@ -86,16 +91,10 @@ class _removescrState extends State<removescr> {
                 return Card(
                   color: const Color.fromARGB(255, 169, 163, 75),
                   child: ListTile(
-                    trailing: IconButton(
-                      onPressed: () {
-                        _deletePatient(pat.id);
-                      },
-                      icon: Icon(Icons.delete),
-                    ),
                     title: Text(
-                      pat.name,
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 43, 41, 21),
+                      pat.name ?? "Unknown",
+                      style: const TextStyle(
+                        color: Color.fromARGB(255, 43, 41, 21),
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -106,6 +105,43 @@ class _removescrState extends State<removescr> {
                         color: Color.fromARGB(179, 9, 4, 4),
                         fontWeight: FontWeight.w700,
                       ),
+                    ),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete, color: Colors.redAccent),
+                      onPressed: () async {
+                        final confirm = await showDialog<bool>(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: const Text("Delete Patient"),
+                            content: const Text(
+                              "Are you sure you want to delete this record?",
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, false),
+                                child: const Text("Cancel"),
+                              ),
+                              ElevatedButton(
+                                onPressed: () => Navigator.pop(context, true),
+                                child: const Text("Delete"),
+                              ),
+                            ],
+                          ),
+                        );
+
+                        if (confirm == true) {
+                          await CrudApi().delete(pat.id ?? '', context);
+                          setState(() {
+                            allPatients.removeAt(index);
+                          });
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("Patient deleted successfully"),
+                            ),
+                          );
+                        }
+                      },
                     ),
                   ),
                 );
