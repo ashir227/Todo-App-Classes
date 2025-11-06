@@ -137,7 +137,7 @@ class _AddScrState extends State<AddScr> {
                     SizedBox(height: 20),
                     newMethod(
                       Icons.phone,
-                      "Contact Number",
+                      "Contact",
                       _contactNode,
                       contactController,
                     ),
@@ -220,7 +220,8 @@ class _AddScrState extends State<AddScr> {
                               name: nameController.text,
                               dob: int.tryParse(dobController.text) ?? 0,
                               gender: genderController.text,
-                              num: int.tryParse(contactController.text) ?? 0,
+                              contact:
+                                  int.tryParse(contactController.text) ?? 0,
                               disease: diseaseController.text,
                             );
 

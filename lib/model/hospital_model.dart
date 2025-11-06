@@ -3,7 +3,7 @@ class HospitalModel {
   final String name;
   final int dob;
   final String gender;
-  final int num;
+  final int contact;
   final String disease;
 
   HospitalModel({
@@ -11,7 +11,7 @@ class HospitalModel {
     required this.name,
     required this.dob,
     required this.gender,
-    required this.num,
+    required this.contact,
     required this.disease,
   });
 
@@ -22,7 +22,7 @@ class HospitalModel {
       name: json['name'] ?? '',
       dob: json['dob'] ?? '',
       gender: json['gender'] ?? '',
-      num: int.tryParse(json['num'].toString()) ?? 0,
+      contact: int.tryParse(json['num'].toString()) ?? 0,
       disease: json['disease'] ?? '',
     );
   }

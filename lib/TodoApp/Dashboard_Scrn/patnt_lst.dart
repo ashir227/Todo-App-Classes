@@ -88,7 +88,7 @@ class _PatientListScreenState extends State<PatientListScreen> {
                       ),
                     ),
                     subtitle: Text(
-                      " DOB : ${pat.dob}\n Gender : ${pat.gender}\n Phone : ${pat.num}\n Disease : ${pat.disease}",
+                      " DOB : ${pat.dob}\n Gender : ${pat.gender}\n Phone : ${pat.contact}\n Disease : ${pat.disease}",
                       style: const TextStyle(
                         color: Color.fromARGB(179, 9, 4, 4),
                         fontWeight: FontWeight.w700,
