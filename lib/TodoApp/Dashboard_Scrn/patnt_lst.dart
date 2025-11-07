@@ -38,14 +38,19 @@ class _PatientListScreenState extends State<PatientListScreen> {
         nointernet = true;
         isload = false;
       });
+      return;
     }
     try {
       var data = await CrudApi().get(context);
       setState(() {
-        var allPatients = data;
+        allPatients = data;
         isload = false;
+        nointernet = false;
       });
     } catch (e) {
+      setState(() {
+        isload = false;
+      });
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text("Error found $e")));
