@@ -6,7 +6,7 @@ import 'package:todo_app/Services/api.dart';
 import 'package:todo_app/model/Pat_class.dart';
 import 'package:todo_app/model/hospital_model.dart';
 import 'package:todo_app/model/patient_data.dart';
-
+import 'package:connectivity_plus/connectivity_plus.dart'
 class PatientListScreen extends StatefulWidget {
   final List<HospitalModel> allPatients;
 
