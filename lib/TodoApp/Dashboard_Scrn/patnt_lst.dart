@@ -6,7 +6,8 @@ import 'package:todo_app/Services/api.dart';
 import 'package:todo_app/model/Pat_class.dart';
 import 'package:todo_app/model/hospital_model.dart';
 import 'package:todo_app/model/patient_data.dart';
-import 'package:connectivity_plus/connectivity_plus.dart'
+import 'package:connectivity_plus/connectivity_plus.dart';
+
 class PatientListScreen extends StatefulWidget {
   final List<HospitalModel> allPatients;
 
@@ -30,21 +31,31 @@ class _PatientListScreenState extends State<PatientListScreen> {
   }
 
   _loadPatient() async {
-    try {
-      final data = await CrudApi().get(context);
-      setState(() {
-        allPatients = data;
-        isload = false;
-      });
-    } catch (e) {
-      setState(() {
-        isload = false;
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Error : $e", style: TextStyle(color: Colors.yellow)),
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (ConnectionState == ConnectionState.none) {
+      Center(
+        child: Column(
+          children: [
+            Image.asset("lib/assets/no_internet.png"),
+            Text("Ooops!", style: TextStyle(fontSize: 25)),
+            Text(
+              "No internet connection was found.\n Check your connection or try again.",
+            ),
+          ],
         ),
       );
+    } else {
+      try {
+        var data = CrudApi().get(context);
+        setState(() {
+          var allPatients = data;
+          isload = false;
+        });
+      } catch (e) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("Error found $e")));
+      }
     }
   }
 
