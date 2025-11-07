@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:todo_app/Services/api.dart';
+import 'package:todo_app/Widgets/no_internet.dart';
 import 'package:todo_app/model/Pat_class.dart';
 import 'package:todo_app/model/hospital_model.dart';
 import 'package:todo_app/model/patient_data.dart';
@@ -21,7 +22,7 @@ class _PatientListScreenState extends State<PatientListScreen> {
   //  CrudApi getn = CrudApi();
   List<HospitalModel> allPatients = [];
   bool isload = true;
-
+  bool nointernet = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -31,31 +32,23 @@ class _PatientListScreenState extends State<PatientListScreen> {
   }
 
   _loadPatient() async {
-    var connectivityResult = await Connectivity().checkConnectivity();
-    if (ConnectionState == ConnectionState.none) {
-      Center(
-        child: Column(
-          children: [
-            Image.asset("lib/assets/no_internet.png"),
-            Text("Ooops!", style: TextStyle(fontSize: 25)),
-            Text(
-              "No internet connection was found.\n Check your connection or try again.",
-            ),
-          ],
-        ),
-      );
-    } else {
-      try {
-        var data = CrudApi().get(context);
-        setState(() {
-          var allPatients = data;
-          isload = false;
-        });
-      } catch (e) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("Error found $e")));
-      }
+    var Isconnection = await Connectivity().checkConnectivity();
+    if (Isconnection == ConnectivityResult.none) {
+      setState(() {
+        nointernet = true;
+        isload = false;
+      });
+    }
+    try {
+      var data = await CrudApi().get(context);
+      setState(() {
+        var allPatients = data;
+        isload = false;
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error found $e")));
     }
   }
 
@@ -76,6 +69,8 @@ class _PatientListScreenState extends State<PatientListScreen> {
           ? Center(
               child: CircularProgressIndicator(backgroundColor: Colors.yellow),
             )
+          : nointernet
+          ? NoInternetWidget()
           : allPatients.isEmpty
           ? const Center(
               child: Text(

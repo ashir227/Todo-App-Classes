@@ -100,7 +100,7 @@ class _removescrState extends State<removescr> {
                       ),
                     ),
                     subtitle: Text(
-                      " dob : ${pat.dob}\n Gender : ${pat.gender}\n contact : ${pat.contact}\n Disease : ${pat.disease}",
+                      " DOB : ${pat.dob}\n Gender : ${pat.gender}\n contact : ${pat.contact}\n Disease : ${pat.disease}",
                       style: const TextStyle(
                         color: Color.fromARGB(179, 9, 4, 4),
                         fontWeight: FontWeight.w700,
