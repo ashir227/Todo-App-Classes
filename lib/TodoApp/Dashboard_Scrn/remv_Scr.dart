@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:todo_app/Services/api.dart';
@@ -13,6 +14,7 @@ class removescr extends StatefulWidget {
 
 class _removescrState extends State<removescr> {
   List<HospitalModel> allPatients = [];
+  bool nointernet = false;
   bool isload = true;
   @override
   void initState() {
@@ -43,20 +45,25 @@ class _removescrState extends State<removescr> {
   }
 
   _loadPatient() async {
-    final data = await CrudApi().get(context);
-    try {
+    var Isconnection = Connectivity().checkConnectivity();
+    if (Isconnection == ConnectivityResult.none) {
       setState(() {
-        allPatients = data;
+        nointernet = true;
         isload = false;
       });
-    } catch (e) {
+      return;
+    }
+    try {
+      var data = await CrudApi().get(context);
       setState(() {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: (Text("$e", style: TextStyle(color: Colors.yellow))),
-          ),
-        );
+        isload = false;
+        nointernet = false;
+        data = allPatients;
       });
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error : $e")));
     }
   }
 

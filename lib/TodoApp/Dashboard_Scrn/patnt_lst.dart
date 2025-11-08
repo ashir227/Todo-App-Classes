@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -23,6 +24,8 @@ class _PatientListScreenState extends State<PatientListScreen> {
   List<HospitalModel> allPatients = [];
   bool isload = true;
   bool nointernet = false;
+  StreamSubscription<ConnectivityResult>? subscription;
+
   @override
   void initState() {
     // TODO: implement initState
