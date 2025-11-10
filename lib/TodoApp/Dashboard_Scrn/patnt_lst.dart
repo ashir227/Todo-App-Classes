@@ -24,7 +24,7 @@ class _PatientListScreenState extends State<PatientListScreen> {
   List<HospitalModel> allPatients = [];
   bool isload = true;
   bool nointernet = false;
-  StreamSubscription<ConnectivityResult>? subscription;
+  // StreamSubscription<ConnectivityResult>? subscription;
 
   @override
   void initState() {
@@ -45,6 +45,7 @@ class _PatientListScreenState extends State<PatientListScreen> {
     }
     try {
       var data = await CrudApi().get(context);
+
       setState(() {
         allPatients = data;
         isload = false;
